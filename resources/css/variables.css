@@ -1,0 +1,103 @@
+@font-face {
+  font-family: 'Union Gothic';
+  src: url('../fonts/union-gothic/union_gothic-variable.ttf') format('truetype');
+  font-weight: 400 1000;
+  font-stretch: 50% 200%;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inclusive Sans';
+  src: url('../fonts/inclusive-sans/InclusiveSans-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inclusive Sans';
+  src: url('../fonts/inclusive-sans/InclusiveSans-Italic-VariableFont_wght.ttf')
+    format('truetype');
+  font-weight: 300 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  /* ─── Colors ─── */
+  --color-off-white: #ebefe6;
+  --color-dark-blue: #242f3f;
+  --color-dark-blue-70: rgb(36 47 63 / 0.7);
+  --color-dark-blue-30: rgb(36 47 63 / 0.3);
+  --color-yellow: #fddd4f;
+  --color-blue: #4bc3ff;
+  --color-teal: #42b289;
+  --color-pink: #f2c8f7;
+  --color-red: #e02b44;
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  /* ─── Fonts ─── */
+  --font-display: 'Union Gothic', system-ui, sans-serif;
+  --font-body: 'Inclusive Sans', system-ui, sans-serif;
+
+  /* ─── Type scale — headings ─── */
+  --text-h1-home: 5rem;
+  --text-h1-home--line-height: 1.2;
+  --text-h1-home--font-weight: 700;
+
+  --text-h1: 4.25rem;
+  --text-h1--line-height: 1.2;
+  --text-h1--font-weight: 700;
+
+  --text-h2: 3.5rem;
+  --text-h2--line-height: 1.3;
+  --text-h2--font-weight: 700;
+
+  --text-h3: 3rem;
+  --text-h3--line-height: 1.4;
+  --text-h3--font-weight: 700;
+
+  --text-h4: 2rem;
+  --text-h4--line-height: 1.3;
+  --text-h4--font-weight: 700;
+
+  --text-h5: 1.75rem;
+  --text-h5--line-height: 1.3;
+  --text-h5--font-weight: 700;
+
+  /* ─── Type scale — text ─── */
+  --text-xlarge: 1.5rem;
+  --text-xlarge--line-height: 1.4;
+  --text-xlarge--font-weight: 400;
+
+  --text-large: 1.25rem;
+  --text-large--line-height: 1.6;
+  --text-large--font-weight: 400;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.625;
+  --text-body--font-weight: 400;
+
+  --text-small: 0.75rem;
+  --text-small--line-height: 1.6;
+  --text-small--font-weight: 400;
+
+  /* ─── Type scale — UI ─── */
+  --text-eyebrow: 1.6rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--font-weight: 400;
+
+  --text-subhead: 1.75rem;
+  --text-subhead--line-height: 1.5;
+  --text-subhead--font-weight: 700;
+
+  --text-button: 1rem;
+  --text-button--line-height: 1.625;
+  --text-button--font-weight: 700;
+
+  --text-button-secondary: 1.25rem;
+  --text-button-secondary--line-height: 1.6;
+  --text-button-secondary--font-weight: 400;
+}

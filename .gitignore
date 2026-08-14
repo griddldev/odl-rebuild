@@ -1,6 +1,9 @@
+/.githooks/
 /node_modules
 /vendor
 /public/*
 !/public/.gitkeep
 .env
 npm-debug.log
+/StyleguideScreenshots/
+resources/fonts/**/*.zip
