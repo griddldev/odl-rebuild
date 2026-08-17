@@ -74,7 +74,6 @@
     font-size: var(--text-callout);
     line-height: var(--text-callout--line-height);
     font-weight: var(--text-callout--font-weight);
-    font-stretch: expanded;
   }
 
   .callout-small {
