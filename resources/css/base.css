@@ -55,10 +55,9 @@
     font-weight: var(--text-small--font-weight);
   }
 
-  a {
+  :where(a) {
     color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 0.15em;
+    text-decoration: none;
   }
 
   img,
