@@ -1,0 +1,72 @@
+{
+    "apiVersion": 3,
+    "name": "sage/hero",
+    "title": "Hero",
+    "category": "custom-blocks",
+    "icon": "cover-image",
+    "description": "Full-width hero with background video/image, heading, and quick navigation links.",
+    "textdomain": "sage",
+    "render": "file:./block.php",
+    "viewScript": "file:./block.js",
+    "viewStyle": "file:./block.css",
+    "attributes": {
+        "heading": {
+            "type": "string",
+            "default": ""
+        },
+        "backgroundImageUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "backgroundImageId": {
+            "type": "number"
+        },
+        "backgroundImageAlt": {
+            "type": "string",
+            "default": ""
+        },
+        "videoUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "videoId": {
+            "type": "number"
+        },
+        "link1Label": {
+            "type": "string",
+            "default": ""
+        },
+        "link1Url": {
+            "type": "string",
+            "default": ""
+        },
+        "link1Target": {
+            "type": "string",
+            "default": "_self"
+        },
+        "link2Label": {
+            "type": "string",
+            "default": ""
+        },
+        "link2Url": {
+            "type": "string",
+            "default": ""
+        },
+        "link2Target": {
+            "type": "string",
+            "default": "_self"
+        },
+        "link3Label": {
+            "type": "string",
+            "default": ""
+        },
+        "link3Url": {
+            "type": "string",
+            "default": ""
+        },
+        "link3Target": {
+            "type": "string",
+            "default": "_self"
+        }
+    }
+}

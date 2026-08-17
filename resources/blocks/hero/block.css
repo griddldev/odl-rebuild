@@ -1,0 +1,61 @@
+/* ─── Video control icon toggling via data-* state ─── */
+
+.hero-block[data-playing='true'] .hero-icon-play {
+  display: none;
+}
+
+.hero-block[data-playing='true'] .hero-icon-pause {
+  display: block;
+}
+
+.hero-block[data-playing='false'] .hero-icon-play {
+  display: block;
+}
+
+.hero-block[data-playing='false'] .hero-icon-pause {
+  display: none;
+}
+
+.hero-block[data-muted='true'] .hero-icon-unmuted {
+  display: none;
+}
+
+.hero-block[data-muted='true'] .hero-icon-muted {
+  display: block;
+}
+
+.hero-block[data-muted='false'] .hero-icon-unmuted {
+  display: block;
+}
+
+.hero-block[data-muted='false'] .hero-icon-muted {
+  display: none;
+}
+
+/* ─── Red indicator dot ─── */
+
+.hero-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-red);
+}
+
+.hero-block[data-playing='true'] .hero-indicator {
+  animation: hero-pulse 2s ease-in-out infinite;
+}
+
+.hero-block[data-playing='false'] .hero-indicator {
+  opacity: 0.4;
+  animation: none;
+}
+
+@keyframes hero-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
