@@ -10,6 +10,7 @@ class BlockManager
     protected array $blocks = [
         'styleguide',
         'hero',
+        'scroll-text',
     ];
 
     /**

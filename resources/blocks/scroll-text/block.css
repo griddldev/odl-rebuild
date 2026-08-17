@@ -1,0 +1,8 @@
+.scroll-word {
+  color: var(--color-dark-blue-30);
+  transition: color 0.3s ease;
+}
+
+.scroll-word[data-revealed='true'] {
+  color: var(--color-dark-blue);
+}
