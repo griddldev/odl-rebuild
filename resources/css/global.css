@@ -1,0 +1,15 @@
+/* Site-wide structural/layout classes only.
+   Block-level classes (.hero, .testimonials, etc.) belong in each block's own CSS file.
+   Button/badge/state-variant classes do not belong here. */
+
+@layer components {
+  .app {
+    overflow-x: hidden;
+  }
+
+  .container {
+    margin-inline: auto;
+    max-width: 80rem;
+    padding-inline: 1.5rem;
+  }
+}

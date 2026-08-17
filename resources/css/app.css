@@ -5,3 +5,6 @@
 @source '../**/*.jsx';
 
 @import './variables.css';
+@import './base.css';
+@import './typography.css';
+@import './global.css';

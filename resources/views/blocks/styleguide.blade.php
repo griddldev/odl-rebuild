@@ -95,7 +95,7 @@
         <div>
           <p class="text-small text-dark-blue-70 !mb-1">Text style</p>
           <p class="font-display text-dark-blue !mb-1 text-lg font-bold">H3</p>
-          <p class="text-small text-dark-blue-70 !mb-0">Union Gothic Standard 700<br>3 rem / 1.4 em</p>
+          <p class="text-small text-dark-blue-70 !mb-0">Union Gothic Standard 700<br>2.75 rem / 1.35 em</p>
         </div>
         <div>
           <p class="text-small text-dark-blue-70 !mb-2">Text example</p>
@@ -175,6 +175,34 @@
           <p class="text-small text-dark-blue-70 !mb-2">Text example</p>
           <p class="font-display text-dark-blue !mb-0 font-bold" style="font-size: 1.75rem; line-height: 1.5">Lorem
             ipsum dolor sit amet consectetur. Sit pellentesque aliquam adipiscing mattis urna ac phasellus</p>
+        </div>
+      </div>
+
+      {{-- Body Callout --}}
+      <div class="grid grid-cols-[200px_1fr] items-start gap-8 rounded-xl bg-white p-8">
+        <div>
+          <p class="text-small text-dark-blue-70 !mb-1">Text style</p>
+          <p class="font-display text-dark-blue !mb-1 text-lg font-bold" style="font-stretch: expanded">Body Callout</p>
+          <p class="text-small text-dark-blue-70 !mb-0">Union Gothic Expanded 700<br>2.625 rem / 1.45 em</p>
+        </div>
+        <div>
+          <p class="text-small text-dark-blue-70 !mb-2">Text example</p>
+          <p class="callout text-dark-blue !mb-0">Lorem ipsum dolor sit amet consectetur. Sit pellentesque aliquam
+            adipiscing mattis urna ac phasellus</p>
+        </div>
+      </div>
+
+      {{-- Body Callout Small --}}
+      <div class="grid grid-cols-[200px_1fr] items-start gap-8 rounded-xl bg-white p-8">
+        <div>
+          <p class="text-small text-dark-blue-70 !mb-1">Text style</p>
+          <p class="font-display text-dark-blue !mb-1 text-lg font-bold">Body Callout Small</p>
+          <p class="text-small text-dark-blue-70 !mb-0">Union Gothic Standard 700<br>1.75 rem / 1.3 em</p>
+        </div>
+        <div>
+          <p class="text-small text-dark-blue-70 !mb-2">Text example</p>
+          <p class="callout-small text-dark-blue !mb-0">Lorem ipsum dolor sit amet consectetur. Sit pellentesque
+            aliquam adipiscing mattis urna ac phasellus</p>
         </div>
       </div>
     </div>
