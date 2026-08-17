@@ -1,0 +1,26 @@
+{
+    "apiVersion": 3,
+    "name": "sage/interactive-gallery",
+    "title": "Interactive Gallery",
+    "category": "custom-blocks",
+    "icon": "format-gallery",
+    "description": "Image gallery with content switcher — click a thumbnail to reveal its content.",
+    "textdomain": "sage",
+    "render": "file:./block.php",
+    "viewScript": "file:./block.js",
+    "viewStyle": "file:./block.css",
+    "attributes": {
+        "heading": {
+            "type": "string",
+            "default": ""
+        },
+        "items": {
+            "type": "array",
+            "default": [
+                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "" },
+                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "" },
+                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "" }
+            ]
+        }
+    }
+}

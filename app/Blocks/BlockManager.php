@@ -11,6 +11,7 @@ class BlockManager
         'styleguide',
         'hero',
         'scroll-text',
+        'interactive-gallery',
     ];
 
     /**

@@ -1,0 +1,68 @@
+/* ─── Image grid layout — horizontal row with animated resize ─── */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+  gap: 8px;
+  height: 450px;
+  transition: grid-template-columns 0.5s ease;
+}
+
+.gallery-grid[data-active='1'] {
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+.gallery-grid[data-active='2'] {
+  grid-template-columns: 1fr 1fr 3fr;
+}
+
+@media (max-width: 1023px) {
+  .gallery-grid,
+  .gallery-grid[data-active='1'],
+  .gallery-grid[data-active='2'] {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 300px 150px;
+    height: auto;
+  }
+
+  .gallery-item.active {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ─── Gallery items ─── */
+
+.gallery-item {
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.4s ease;
+}
+
+.gallery-item:not(.active) img {
+  filter: grayscale(100%);
+}
+
+.gallery-item.active img {
+  filter: none;
+}
+
+/* ─── Content visibility ─── */
+
+.gallery-title,
+.gallery-description {
+  display: none;
+}
+
+.gallery-title.active,
+.gallery-description.active {
+  display: block;
+}
