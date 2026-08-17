@@ -6,10 +6,10 @@
   .app {
     overflow-x: hidden;
   }
+}
 
-  .container {
-    margin-inline: auto;
-    max-width: 80rem;
-    padding-inline: 1.5rem;
-  }
+@utility container {
+  margin-inline: auto;
+  max-width: 1440px;
+  padding-inline: 1.5rem;
 }
