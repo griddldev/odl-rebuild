@@ -1,0 +1,40 @@
+{
+    "apiVersion": 3,
+    "name": "sage/split-accordion",
+    "title": "Split Accordion",
+    "category": "custom-blocks",
+    "icon": "list-view",
+    "description": "Two-column section with image on the left and an accordion with optional CTA on the right.",
+    "textdomain": "sage",
+    "render": "file:./block.php",
+    "viewScript": "file:./block.js",
+    "viewStyle": "file:./block.css",
+    "attributes": {
+        "heading": {
+            "type": "string",
+            "default": ""
+        },
+        "subtitle": {
+            "type": "string",
+            "default": ""
+        },
+        "imageUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "imageId": {
+            "type": "number",
+            "default": null
+        },
+        "imageAlt": {
+            "type": "string",
+            "default": ""
+        },
+        "items": {
+            "type": "array",
+            "default": [
+                { "title": "", "content": "", "linkText": "", "linkUrl": "" }
+            ]
+        }
+    }
+}

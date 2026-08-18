@@ -1,0 +1,13 @@
+.split-accordion-block .accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.split-accordion-block .accordion-icon {
+  transition: transform 0.35s ease;
+}
+
+.split-accordion-block .accordion-item.is-open .accordion-icon {
+  transform: rotate(180deg);
+}
