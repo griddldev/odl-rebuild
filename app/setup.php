@@ -66,6 +66,26 @@ add_filter('theme_file_path', function ($path, $file) {
 add_filter('should_load_separate_core_block_assets', '__return_false');
 
 /**
+ * Register vendor scripts and styles (enqueued per-block in block.php).
+ */
+add_action('wp_enqueue_scripts', function () {
+    wp_register_script(
+        'swiper',
+        get_template_directory_uri() . '/resources/js/vendor/swiper-bundle.min.js',
+        [],
+        '11.0',
+        true,
+    );
+
+    wp_register_style(
+        'swiper',
+        get_template_directory_uri() . '/resources/css/vendor/swiper-bundle.min.css',
+        [],
+        '11.0',
+    );
+}, 5);
+
+/**
  * Register the initial theme setup.
  *
  * @return void

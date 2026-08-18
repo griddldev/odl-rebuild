@@ -1,0 +1,32 @@
+.crooked-carousel-block .swiper {
+  overflow: visible;
+}
+
+.crooked-carousel-block .swiper-wrapper {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.crooked-carousel-block .crooked-card {
+  max-width: 480px;
+  margin: 0 8px;
+}
+
+.crooked-carousel-block .swiper-slide:nth-child(odd) .crooked-card {
+  transform: rotate(-2deg);
+}
+
+.crooked-carousel-block .swiper-slide:nth-child(even) .crooked-card {
+  transform: rotate(2deg) translateY(20px);
+}
+
+.crooked-carousel-block .carousel-prev,
+.crooked-carousel-block .carousel-next {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.crooked-carousel-block .carousel-prev:hover,
+.crooked-carousel-block .carousel-next:hover {
+  opacity: 0.7;
+}
