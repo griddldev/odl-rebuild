@@ -12,6 +12,7 @@ class BlockManager
         'hero',
         'scroll-text',
         'interactive-gallery',
+        'colored-cards',
     ];
 
     /**
