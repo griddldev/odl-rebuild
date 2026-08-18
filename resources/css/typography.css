@@ -115,7 +115,7 @@
   .primary-nav {
     font-family: var(--font-display);
     font-size: var(--text-button);
-    line-height: var(--text-button--line-height);
+    line-height: 1;
     font-weight: var(--text-button-secondary--font-weight);
   }
 
