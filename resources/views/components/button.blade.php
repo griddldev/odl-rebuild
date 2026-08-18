@@ -2,6 +2,7 @@
     'href' => null,
     'target' => '_self',
     'type' => 'button',
+    'color' => 'off-white',
 ])
 
 @php
@@ -10,8 +11,8 @@
   $arrowDefaultIcon = \Illuminate\Support\Facades\Vite::asset('resources/images/icons/button-arrow-default.svg');
   $arrowHoverIcon = \Illuminate\Support\Facades\Vite::asset('resources/images/icons/button-arrow-hover.svg');
 
-  $baseClass =
-      'group inline-flex items-center gap-5 text-off-white transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-red focus-visible:ring-offset-2 focus-visible:ring-offset-dark-blue';
+  $colorClass = $color === 'dark-blue' ? 'text-dark-blue' : 'text-off-white';
+  $baseClass = "group inline-flex items-center gap-5 {$colorClass} transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-red focus-visible:ring-offset-2 focus-visible:ring-offset-dark-blue";
   $textClass = 'font-display button-primary font-bold leading-none tracking-[0.02em]';
   $arrowWrapClass = 'relative inline-flex h-6 w-[2.875rem] items-center overflow-visible';
   $arrowDefaultClass =
