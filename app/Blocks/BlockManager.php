@@ -13,6 +13,7 @@ class BlockManager
         'scroll-text',
         'interactive-gallery',
         'colored-cards',
+        'split-container',
     ];
 
     /**
