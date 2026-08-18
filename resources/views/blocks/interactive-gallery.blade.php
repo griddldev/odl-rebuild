@@ -26,7 +26,7 @@
             @if (!empty($item['title']))
               <h3 class="gallery-title heading-3 text-dark-blue {{ $index === 0 ? 'active' : '' }}"
                 data-index="{{ $index }}">
-                {{ $item['title'] }}
+                {!! wp_kses_post($item['title']) !!}
               </h3>
             @endif
           @endforeach

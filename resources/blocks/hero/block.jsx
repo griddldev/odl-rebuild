@@ -155,14 +155,18 @@ registerBlockType('sage/hero', {
               key={link.prefix}
               className="flex gap-3 rounded-lg border border-gray-200 bg-white p-3"
             >
-              <TextControl
-                label={`Label ${link.n}`}
-                value={link.label}
-                onChange={(value) =>
-                  setAttributes({ [`${link.prefix}Label`]: value })
-                }
-                className="flex-1"
-              />
+              <div className="flex-1">
+                <p className="mb-2 text-sm font-semibold">Label {link.n}</p>
+                <RichText
+                  tagName="div"
+                  value={link.label}
+                  onChange={(value) =>
+                    setAttributes({ [`${link.prefix}Label`]: value })
+                  }
+                  placeholder={`Enter label ${link.n}...`}
+                  allowedFormats={['core/bold', 'core/italic']}
+                />
+              </div>
               <TextControl
                 label="URL"
                 value={link.url}

@@ -81,7 +81,7 @@
       <div class="container flex flex-wrap justify-center gap-x-16 gap-y-4 py-5">
         @foreach ($links as $link)
           <x-button :href="$link['url']" :target="$link['target']" class="justify-center">
-            {{ $link['label'] }}
+            {!! wp_kses_post($link['label']) !!}
           </x-button>
         @endforeach
       </div>

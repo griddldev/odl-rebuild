@@ -5,7 +5,7 @@ import {
   MediaUpload,
   MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { TextControl, Button } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 import { ImageUploadWithHover } from '../components/ImageUploadWithHover.jsx';
 
 registerBlockType('sage/interactive-gallery', {
@@ -101,11 +101,13 @@ registerBlockType('sage/interactive-gallery', {
 
               {/* Title */}
               <div className="mb-3">
-                <TextControl
-                  label="Title"
+                <p className="mb-2 text-sm font-semibold">Title</p>
+                <RichText
+                  tagName="div"
                   value={item.title}
                   onChange={(value) => updateItem(index, 'title', value)}
                   placeholder="Enter item title..."
+                  allowedFormats={['core/bold', 'core/italic']}
                 />
               </div>
 
