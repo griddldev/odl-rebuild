@@ -4,3 +4,6 @@ import '../blocks/scroll-text/block.jsx';
 import '../blocks/interactive-gallery/block.jsx';
 import '../blocks/colored-cards/block.jsx';
 import '../blocks/split-container/block.jsx';
+import '../blocks/card-grid/block.jsx';
+import '../blocks/split-accordion/block.jsx';
+import '../blocks/crooked-carousel/block.jsx';

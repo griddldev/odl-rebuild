@@ -14,6 +14,9 @@ class BlockManager
         'interactive-gallery',
         'colored-cards',
         'split-container',
+        'card-grid',
+        'split-accordion',
+        'crooked-carousel',
     ];
 
     /**
