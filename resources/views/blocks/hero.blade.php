@@ -25,40 +25,28 @@
 
     {{-- Video controls --}}
     @if (!empty($videoUrl))
-      <div class="absolute right-6 top-1/2 flex -translate-y-1/2 flex-col items-center gap-3">
-        <div class="hero-indicator"></div>
-
-        <button
-          class="hero-play-btn bg-dark-blue/60 flex h-10 w-10 items-center justify-center rounded-full text-white backdrop-blur-sm"
-          aria-label="Pause video">
-          {{-- Pause icon (visible when playing) --}}
-          <svg class="hero-icon-pause h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <rect x="6" y="4" width="4" height="16" rx="1" />
-            <rect x="14" y="4" width="4" height="16" rx="1" />
-          </svg>
-          {{-- Play icon (visible when paused) --}}
-          <svg class="hero-icon-play h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11.04-6.86a1 1 0 0 0 0-1.72L9.5 4.28a1 1 0 0 0-1.5.86z" />
-          </svg>
+      <div class="bg-off-white absolute right-0 top-1/2 flex -translate-y-1/2 flex-col items-center gap-3">
+        <button class="hero-play-btn bg-off-white flex items-center justify-center p-6" aria-label="Pause video">
+          <img class="hero-icon-pause"
+            src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/pause-32.svg') }}" alt=""
+            aria-hidden="true" />
+          <img class="hero-icon-play"
+            src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/play-32.svg') }}" alt=""
+            aria-hidden="true" />
         </button>
 
-        <button
-          class="hero-mute-btn bg-dark-blue/60 flex h-10 w-10 items-center justify-center rounded-full text-white backdrop-blur-sm"
-          aria-label="Unmute video">
-          {{-- Muted icon (visible when muted) --}}
-          <svg class="hero-icon-muted h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" />
-            <line x1="23" y1="9" x2="17" y2="15" />
-            <line x1="17" y1="9" x2="23" y2="15" />
-          </svg>
-          {{-- Unmuted icon (visible when unmuted) --}}
-          <svg class="hero-icon-unmuted h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" />
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-          </svg>
+        <button class="hero-mute-btn bg-off-white flex items-center justify-center p-6" aria-label="Unmute video">
+          <img class="hero-icon-muted"
+            src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/mute-32.svg') }}" alt=""
+            aria-hidden="true" />
+          <img class="hero-icon-unmuted"
+            src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/sound-32.svg') }}" alt=""
+            aria-hidden="true" />
+        </button>
+
+        <button class="bg-off-white flex items-center justify-center p-6" aria-label="Settings">
+          <img src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/settings-32.svg') }}"
+            alt="" aria-hidden="true" />
         </button>
       </div>
     @endif
