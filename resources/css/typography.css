@@ -46,12 +46,19 @@
     font-stretch: expanded;
   }
 
+  .heading-3-small {
+    font-family: var(--font-display);
+    font-size: var(--text-h3-small);
+    line-height: var(--text-h3-small--line-height);
+    font-weight: var(--text-h3-small--font-weight);
+    font-stretch: expanded;
+  }
+
   .eyebrow {
     font-family: var(--font-body);
     font-size: var(--text-eyebrow);
     line-height: var(--text-eyebrow--line-height);
     font-weight: var(--text-eyebrow--font-weight);
-    text-transform: uppercase;
   }
 
   .subhead-wide {
@@ -81,6 +88,13 @@
     font-size: var(--text-callout-small);
     line-height: var(--text-callout-small--line-height);
     font-weight: var(--text-callout-small--font-weight);
+  }
+
+  .text-xlarge {
+    font-family: var(--font-body);
+    font-size: var(--text-xlarge);
+    line-height: var(--text-xlarge--line-height);
+    font-weight: var(--text-xlarge--font-weight);
   }
 
   .text-xlarge-union {
