@@ -1,0 +1,21 @@
+.blog-section-block .blog-section-featured {
+  position: relative;
+}
+
+.blog-section-block .blog-section-asterisk {
+  pointer-events: none;
+}
+
+.blog-section-block .blog-section-card {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.blog-section-block .blog-section-card:hover {
+  transform: translateY(-4px);
+}
+
+.blog-section-block .blog-section-card-image {
+  overflow: hidden;
+}

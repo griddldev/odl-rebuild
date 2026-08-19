@@ -7,3 +7,4 @@ import '../blocks/split-container/block.jsx';
 import '../blocks/card-grid/block.jsx';
 import '../blocks/split-accordion/block.jsx';
 import '../blocks/crooked-carousel/block.jsx';
+import '../blocks/blog-section/block.jsx';

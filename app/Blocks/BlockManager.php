@@ -17,6 +17,7 @@ class BlockManager
         'card-grid',
         'split-accordion',
         'crooked-carousel',
+        'blog-section',
     ];
 
     /**
