@@ -28,7 +28,7 @@
           @endif
         </div>
 
-        <div class="absolute -bottom-[20%] right-0">
+        <div class="absolute -bottom-[20%] right-0 hidden md:block">
           <img class="w-[450px]"
             src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/arrows-up.svg') }}" alt=""
             aria-hidden="true" />
@@ -43,7 +43,7 @@
               $bgClass = $colorMap[$card['backgroundColor'] ?? 'blue'] ?? 'bg-blue';
             @endphp
             <div
-              class="{{ $bgClass }} flex aspect-square flex-col justify-between overflow-hidden rounded-sm p-8 lg:p-10">
+              class="{{ $bgClass }} flex flex-col justify-between overflow-hidden rounded-sm p-8 md:aspect-square lg:p-10">
               <div>
                 @if (!empty($card['title']))
                   <h3 class="heading-3 text-dark-blue mb-4">{!! wp_kses_post($card['title']) !!}</h3>
