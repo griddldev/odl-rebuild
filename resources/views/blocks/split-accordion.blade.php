@@ -9,7 +9,7 @@
     @if (!empty($heading) || !empty($subtitleFaded) || !empty($subtitleMain))
       <div class="mb-16 grid grid-cols-1 items-start gap-8 lg:grid-cols-2">
         @if (!empty($heading))
-          <div class="flex items-center gap-6">
+          <div class="flex flex-col items-start gap-6 md:flex-row md:items-center">
             <h2 class="heading-2 text-dark-blue stagger-title">
               @foreach (preg_split('/\s+/', wp_strip_all_tags($heading)) as $word)
                 @if ($word !== '')
@@ -17,7 +17,7 @@
                 @endif
               @endforeach
             </h2>
-            <div class="ml-6 flex flex-row items-center">
+            <div class="ml-0 flex flex-row items-start md:ml-6 md:items-center">
               <img src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/chevron-right.svg') }}"
                 alt="" class="w-[65px] shrink-0" aria-hidden="true" />
               <img src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/chevron-right.svg') }}"
