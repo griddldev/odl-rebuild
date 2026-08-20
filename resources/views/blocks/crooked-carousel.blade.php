@@ -18,9 +18,9 @@
       <div class="swiper-wrapper pb-8">
         @foreach ($items as $item)
           <div class="swiper-slide">
-            <div class="crooked-card flex aspect-square flex-col justify-start rounded-sm bg-white p-8 lg:p-10">
+            <div class="crooked-card flex aspect-square flex-col justify-start rounded-sm bg-white p-4 lg:p-10">
               @if (!empty($item['stat']))
-                <p class="heading-1 text-dark-blue mb-4">{!! wp_kses_post($item['stat']) !!}</p>
+                <p class="stat text-dark-blue mb-4">{!! wp_kses_post($item['stat']) !!}</p>
               @endif
 
               @if (!empty($item['description']))
@@ -34,19 +34,13 @@
 
     {{-- Navigation arrows --}}
     <div class="mt-8 flex items-center justify-center gap-4">
-      <button class="carousel-prev" aria-label="Previous slide">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true">
-          <path d="M19 12H5M5 12l6-6M5 12l6 6" stroke="#e02b44" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
+      <button class="carousel-prev bg-off-white p-2" aria-label="Previous slide">
+        <img src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/button-arrow-default.svg') }}"
+          alt="" class="h-4 w-auto rotate-180" aria-hidden="true" />
       </button>
-      <button class="carousel-next" aria-label="Next slide">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true">
-          <path d="M5 12h14M13 6l6 6-6 6" stroke="#e02b44" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" />
-        </svg>
+      <button class="carousel-next bg-off-white p-2" aria-label="Next slide">
+        <img src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/button-arrow-default.svg') }}"
+          alt="" class="h-4 w-auto" aria-hidden="true" />
       </button>
     </div>
   @endif
