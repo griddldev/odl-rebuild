@@ -124,6 +124,11 @@
     font-size: var(--text-button-secondary);
     line-height: var(--text-button-secondary--line-height);
     font-weight: var(--text-button-secondary--font-weight);
+    text-decoration: underline;
+  }
+
+  .button-secondary:hover {
+    text-decoration: none;
   }
 
   .primary-nav {
