@@ -3,7 +3,7 @@
   $searchIcon = \Illuminate\Support\Facades\Vite::asset('resources/images/icons/search.svg');
 @endphp
 
-<div class="bg-dark-blue py-3">
+<div class="bg-dark-blue hidden py-3 lg:block">
   <div class="container flex flex-row items-center justify-between">
     @if (has_nav_menu('top_navigation'))
       {!! wp_nav_menu([
@@ -20,7 +20,7 @@
     @endif
   </div>
 </div>
-<header class="banner px-9 py-2.5">
+<header class="banner hidden px-9 py-2.5 lg:block">
   <div class="align-center container flex flex-row justify-between">
     <!-- logo -->
     <img src="{{ esc_url($logo) }}" alt="" width="2871" height="530" class="block h-auto w-40" aria-hidden="true">
