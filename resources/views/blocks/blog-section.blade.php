@@ -1,4 +1,4 @@
-<section class="blog-section-block bg-off-white py-14 lg:py-24">
+<section class="blog-section-block bg-off-white lg:!pt-30 py-24 lg:py-28">
   <div class="container">
     {{-- Featured Blog --}}
     <div class="blog-section-featured relative flex flex-row justify-between gap-10">
@@ -66,7 +66,8 @@
               @if (!empty($post['categories']))
                 <div class="mb-6 flex flex-wrap gap-2">
                   @foreach ($post['categories'] as $category)
-                    <span class="text-small bg-off-white text-dark-blue px-2 py-1 font-medium">
+                    <span
+                      class="text-small text-dark-blue {{ $color === 'off-white' ? 'blog-section-card-category--pink' : 'bg-off-white' }} px-2 py-1 font-medium">
                       {{ esc_html($category) }}
                     </span>
                   @endforeach
@@ -74,8 +75,8 @@
               @endif
 
               <h4 class="h5 !mb-6 group-hover:underline">{!! wp_kses_post($post['title']) !!}</h4>
-              <p class="text-body line-clamp-3">{!! wp_kses_post($post['excerpt']) !!}</p>
-              <p class="text-small text-dark-blue !mb-0">{{ esc_html($post['date']) }}</p>
+              <p class="text-body mb-6 line-clamp-3">{!! wp_kses_post($post['excerpt']) !!}</p>
+              <p class="primary-nav text-dark-blue !mb-0">{{ esc_html($post['date']) }}</p>
             </a>
           @endforeach
         </div>
