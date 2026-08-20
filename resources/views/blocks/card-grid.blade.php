@@ -60,7 +60,7 @@
 
               @if (!empty($card['linkText']) && !empty($card['linkUrl']))
                 <a href="{{ esc_url($card['linkUrl']) }}"
-                  class="primary-nav text-dark-blue decoration-dark-blue underline decoration-2 underline-offset-8">
+                  class="button-secondary text-dark-blue decoration-2 underline-offset-8">
                   {!! wp_kses_post($card['linkText']) !!}
                 </a>
               @endif
