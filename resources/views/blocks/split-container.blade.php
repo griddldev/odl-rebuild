@@ -1,4 +1,4 @@
-<section class="split-container-block bg-off-white py-14 lg:py-24">
+<section class="split-container-block bg-off-white py-14 lg:py-28">
   <div class="container">
     <div class="flex flex-col items-start gap-10 lg:flex-row lg:gap-16">
 
