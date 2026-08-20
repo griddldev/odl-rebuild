@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+  var MOBILE_BREAKPOINT = 1024;
   var blocks = document.querySelectorAll('.interactive-gallery-block');
 
   blocks.forEach(function (block) {
@@ -13,6 +14,23 @@ document.addEventListener('DOMContentLoaded', function () {
     var transitioning = false;
     var FADE_DURATION = 250;
 
+    function isMobile() {
+      return window.innerWidth < MOBILE_BREAKPOINT;
+    }
+
+    function updateSlidePosition(index) {
+      if (!isMobile()) return;
+      items.forEach(function (item) {
+        item.style.transform = 'translateX(-' + index * 100 + '%)';
+      });
+    }
+
+    function clearSlidePosition() {
+      items.forEach(function (item) {
+        item.style.transform = '';
+      });
+    }
+
     function setActive(index, animate) {
       grid.setAttribute('data-active', index);
 
@@ -24,6 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (activeItem && activeItem.dataset.activeColor) {
         block.style.backgroundColor = activeItem.dataset.activeColor;
       }
+
+      updateSlidePosition(index);
 
       if (!animate || currentIndex === index) {
         titles.forEach(function (title, i) {
@@ -62,6 +82,34 @@ document.addEventListener('DOMContentLoaded', function () {
         if (transitioning) return;
         setActive(i, true);
       });
+    });
+
+    var prevBtn = block.querySelector('.gallery-prev');
+    var nextBtn = block.querySelector('.gallery-next');
+    var totalItems = items.length;
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        if (transitioning) return;
+        var newIndex = (currentIndex - 1 + totalItems) % totalItems;
+        setActive(newIndex, true);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        if (transitioning) return;
+        var newIndex = (currentIndex + 1) % totalItems;
+        setActive(newIndex, true);
+      });
+    }
+
+    window.addEventListener('resize', function () {
+      if (isMobile()) {
+        updateSlidePosition(currentIndex);
+      } else {
+        clearSlidePosition();
+      }
     });
 
     setActive(0, false);

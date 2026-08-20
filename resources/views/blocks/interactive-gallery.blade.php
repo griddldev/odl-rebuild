@@ -5,7 +5,8 @@
   <div class="container relative">
 
     <img src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/star.svg') }}" alt=""
-      class="absolute right-5 top-[-35%] w-full max-w-[190px] translate-y-1/2 object-cover" aria-hidden="true" />
+      class="-right-22 absolute -top-60 w-full max-w-[190px] translate-y-1/2 object-cover md:right-5 md:top-[-35%]"
+      aria-hidden="true" />
 
     {{-- Section heading --}}
     @if (!empty($heading))
@@ -49,6 +50,18 @@
             @endif
           @endforeach
         </div>
+      </div>
+
+      {{-- Mobile navigation --}}
+      <div class="gallery-mobile-nav mt-8 flex items-center justify-center gap-4 lg:hidden">
+        <button class="gallery-prev bg-off-white p-2" aria-label="Previous slide">
+          <img src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/button-arrow-default.svg') }}"
+            alt="" class="h-4 w-auto rotate-180" aria-hidden="true" />
+        </button>
+        <button class="gallery-next bg-off-white p-2" aria-label="Next slide">
+          <img src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/button-arrow-default.svg') }}"
+            alt="" class="h-4 w-auto" aria-hidden="true" />
+        </button>
       </div>
     @endif
 
