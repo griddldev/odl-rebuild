@@ -74,7 +74,7 @@
                 </div>
               @endif
 
-              <h4 class="h5 !mb-6 group-hover:underline">{!! wp_kses_post($post['title']) !!}</h4>
+              <h4 class="h5 !mb-6">{!! wp_kses_post($post['title']) !!}</h4>
               <p class="text-body mb-6 line-clamp-3">{!! wp_kses_post($post['excerpt']) !!}</p>
               <p class="primary-nav text-dark-blue !mb-0">{{ esc_html($post['date']) }}</p>
             </a>
