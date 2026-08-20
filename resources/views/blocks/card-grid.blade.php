@@ -19,7 +19,7 @@
         @endif
 
         @if (!empty($subtitle))
-          <div class="text-large-union text-dark-blue mb-6">{!! wp_kses_post($subtitle) !!}</div>
+          <div class="callout-small text-dark-blue mb-6">{!! wp_kses_post($subtitle) !!}</div>
         @endif
 
         @if (!empty($body))
