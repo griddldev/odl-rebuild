@@ -3,21 +3,25 @@
     <div class="flex flex-col items-start gap-10 lg:flex-row lg:gap-16">
 
       {{-- Image --}}
-      <div class="lg:w-1/2">
+      <div class="w-full lg:w-1/2">
         @if (!empty($imageUrl))
           <img src="{{ esc_url($imageUrl) }}" alt="{{ esc_attr($imageAlt) }}" loading="lazy"
-            class="h-auto max-h-[675px] w-full object-cover" />
+            class="h-[250px] w-full object-cover lg:h-auto lg:max-h-[675px]" />
         @endif
       </div>
 
       {{-- Content --}}
       <div class="lg:w-1/2">
+        @if (!empty($mobileTitle))
+          <div class="callout-small text-dark-blue mb-6 lg:hidden">{!! wp_kses_post($mobileTitle) !!}</div>
+        @endif
+
         @if (!empty($heading))
-          <h2 class="heading-2 text-dark-blue mb-6">{!! wp_kses_post($heading) !!}</h2>
+          <h2 class="heading-2 text-dark-blue mb-6 hidden lg:block">{!! wp_kses_post($heading) !!}</h2>
         @endif
 
         @if (!empty($subtitle))
-          <div class="callout-small text-dark-blue mb-6">{!! wp_kses_post($subtitle) !!}</div>
+          <div class="callout-small text-dark-blue mb-6 hidden lg:block">{!! wp_kses_post($subtitle) !!}</div>
         @endif
 
         @if (!empty($body))

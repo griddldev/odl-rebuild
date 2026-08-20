@@ -4,6 +4,7 @@ $imageUrl = $attributes['imageUrl'] ?? '';
 $imageAlt = $attributes['imageAlt'] ?? '';
 $heading = $attributes['heading'] ?? '';
 $subtitle = $attributes['subtitle'] ?? '';
+$mobileTitle = $attributes['mobileTitle'] ?? '';
 $body = $attributes['body'] ?? '';
 $link1Text = $attributes['link1Text'] ?? '';
 $link1Url = $attributes['link1Url'] ?? '';
@@ -15,6 +16,7 @@ echo view('blocks.split-container', [
     'imageAlt' => $imageAlt,
     'heading' => $heading,
     'subtitle' => $subtitle,
+    'mobileTitle' => $mobileTitle,
     'body' => $body,
     'link1Text' => $link1Text,
     'link1Url' => $link1Url,

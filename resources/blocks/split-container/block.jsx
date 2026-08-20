@@ -15,6 +15,7 @@ registerBlockType('sage/split-container', {
       imageId,
       heading,
       subtitle,
+      mobileTitle,
       body,
       link1Text,
       link1Url,
@@ -93,6 +94,20 @@ registerBlockType('sage/split-container', {
             value={subtitle}
             onChange={(value) => setAttributes({ subtitle: value })}
             placeholder="Enter subtitle..."
+            allowedFormats={['core/bold', 'core/italic']}
+          />
+        </div>
+
+        {/* Mobile Title */}
+        <div className="mb-4">
+          <p className="mb-2 text-sm font-semibold">
+            Mobile Title (replaces heading + subtitle on mobile)
+          </p>
+          <RichText
+            tagName="div"
+            value={mobileTitle}
+            onChange={(value) => setAttributes({ mobileTitle: value })}
+            placeholder="Enter mobile title..."
             allowedFormats={['core/bold', 'core/italic']}
           />
         </div>

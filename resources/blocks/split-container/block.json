@@ -28,6 +28,10 @@
             "type": "string",
             "default": ""
         },
+        "mobileTitle": {
+            "type": "string",
+            "default": ""
+        },
         "body": {
             "type": "string",
             "default": ""
