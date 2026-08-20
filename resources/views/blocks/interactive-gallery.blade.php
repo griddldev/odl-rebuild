@@ -2,7 +2,10 @@
   $firstColor = $items[0]['activeColor'] ?? '#42B289';
 @endphp
 <section class="interactive-gallery-block py-14 lg:py-24" style="background-color: {{ esc_attr($firstColor) }}">
-  <div class="container">
+  <div class="container relative">
+
+    <img src="{{ Illuminate\Support\Facades\Vite::asset('resources/images/icons/star.svg') }}" alt=""
+      class="absolute right-5 top-[-35%] w-full max-w-[190px] translate-y-1/2 object-cover" aria-hidden="true" />
 
     {{-- Section heading --}}
     @if (!empty($heading))
