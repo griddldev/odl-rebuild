@@ -10,7 +10,8 @@ import { ImageUploadWithHover } from '../components/ImageUploadWithHover.jsx';
 
 registerBlockType('sage/split-accordion', {
   edit: ({ attributes, setAttributes }) => {
-    const { heading, subtitle, imageUrl, imageId, items } = attributes;
+    const { heading, subtitleFaded, subtitleMain, imageUrl, imageId, items } =
+      attributes;
     const blockProps = useBlockProps();
 
     const updateItem = (index, field, value) => {
@@ -67,14 +68,28 @@ registerBlockType('sage/split-accordion', {
           />
         </div>
 
-        {/* Subtitle */}
-        <div className="mb-6">
-          <p className="mb-2 text-sm font-semibold">Section Subtitle</p>
+        {/* Subtitle Faded (50% opacity) */}
+        <div className="mb-4">
+          <p className="mb-2 text-sm font-semibold">
+            Subtitle Top (50% opacity)
+          </p>
           <RichText
             tagName="div"
-            value={subtitle}
-            onChange={(value) => setAttributes({ subtitle: value })}
-            placeholder="Enter subtitle text..."
+            value={subtitleFaded}
+            onChange={(value) => setAttributes({ subtitleFaded: value })}
+            placeholder="Enter faded subtitle text..."
+            allowedFormats={['core/bold', 'core/italic']}
+          />
+        </div>
+
+        {/* Subtitle Main */}
+        <div className="mb-6">
+          <p className="mb-2 text-sm font-semibold">Subtitle Bottom</p>
+          <RichText
+            tagName="div"
+            value={subtitleMain}
+            onChange={(value) => setAttributes({ subtitleMain: value })}
+            placeholder="Enter main subtitle text..."
             allowedFormats={['core/bold', 'core/italic']}
           />
         </div>

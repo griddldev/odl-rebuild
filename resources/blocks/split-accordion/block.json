@@ -14,7 +14,11 @@
             "type": "string",
             "default": ""
         },
-        "subtitle": {
+        "subtitleFaded": {
+            "type": "string",
+            "default": ""
+        },
+        "subtitleMain": {
             "type": "string",
             "default": ""
         },

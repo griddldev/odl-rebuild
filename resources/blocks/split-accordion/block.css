@@ -1,3 +1,23 @@
+/* ─── Staggered title ─── */
+
+.split-accordion-block .stagger-title {
+  --stagger-step: 5rem;
+}
+
+.split-accordion-block .stagger-word {
+  display: block;
+}
+
+.split-accordion-block .stagger-word:nth-child(3n + 2) {
+  padding-left: var(--stagger-step);
+}
+
+.split-accordion-block .stagger-word:nth-child(3n) {
+  padding-left: calc(var(--stagger-step) * 2);
+}
+
+/* ─── Accordion ─── */
+
 .split-accordion-block .accordion-panel {
   max-height: 0;
   overflow: hidden;
