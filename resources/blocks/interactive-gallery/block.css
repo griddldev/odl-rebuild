@@ -1,19 +1,40 @@
 /* ─── Image grid layout — horizontal row with animated resize ─── */
 
 .gallery-grid {
+  --col-active: 3fr;
+  --col-idle: 1fr;
+  --col-hover: 1.4fr;
   display: grid;
-  grid-template-columns: 3fr 1fr 1fr;
+  grid-template-columns: var(--c0) var(--c1) var(--c2);
   gap: 8px;
   height: 450px;
-  transition: grid-template-columns 0.5s ease;
+  transition: grid-template-columns 0.4s ease;
+
+  --c0: var(--col-active);
+  --c1: var(--col-idle);
+  --c2: var(--col-idle);
 }
 
 .gallery-grid[data-active='1'] {
-  grid-template-columns: 1fr 3fr 1fr;
+  --c0: var(--col-idle);
+  --c1: var(--col-active);
+  --c2: var(--col-idle);
 }
 
 .gallery-grid[data-active='2'] {
-  grid-template-columns: 1fr 1fr 3fr;
+  --c0: var(--col-idle);
+  --c1: var(--col-idle);
+  --c2: var(--col-active);
+}
+
+.gallery-grid:has(.gallery-item:nth-child(1):not(.active):hover) {
+  --c0: var(--col-hover);
+}
+.gallery-grid:has(.gallery-item:nth-child(2):not(.active):hover) {
+  --c1: var(--col-hover);
+}
+.gallery-grid:has(.gallery-item:nth-child(3):not(.active):hover) {
+  --c2: var(--col-hover);
 }
 
 @media (max-width: 1023px) {
@@ -44,17 +65,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition:
-    filter 0.4s ease,
-    transform 0.4s ease;
+  transition: filter 0.4s ease;
 }
 
 .gallery-item:not(.active) img {
   filter: grayscale(100%);
-}
-
-.gallery-item:not(.active):hover img {
-  transform: scale(1.05);
 }
 
 .gallery-item.active img {
