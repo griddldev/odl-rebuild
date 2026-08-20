@@ -9,28 +9,61 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (!grid) return;
 
-    function setActive(index) {
+    var currentIndex = -1;
+    var transitioning = false;
+    var FADE_DURATION = 250;
+
+    function setActive(index, animate) {
       grid.setAttribute('data-active', index);
 
       items.forEach(function (item, i) {
         item.classList.toggle('active', i === index);
       });
 
-      titles.forEach(function (title, i) {
-        title.classList.toggle('active', i === index);
+      var activeItem = items[index];
+      if (activeItem && activeItem.dataset.activeColor) {
+        block.style.backgroundColor = activeItem.dataset.activeColor;
+      }
+
+      if (!animate || currentIndex === index) {
+        titles.forEach(function (title, i) {
+          title.classList.toggle('active', i === index);
+        });
+        descriptions.forEach(function (desc, i) {
+          desc.classList.toggle('active', i === index);
+        });
+        currentIndex = index;
+        return;
+      }
+
+      transitioning = true;
+
+      titles.forEach(function (title) {
+        title.classList.remove('active');
+      });
+      descriptions.forEach(function (desc) {
+        desc.classList.remove('active');
       });
 
-      descriptions.forEach(function (desc, i) {
-        desc.classList.toggle('active', i === index);
-      });
+      setTimeout(function () {
+        titles.forEach(function (title, i) {
+          title.classList.toggle('active', i === index);
+        });
+        descriptions.forEach(function (desc, i) {
+          desc.classList.toggle('active', i === index);
+        });
+        currentIndex = index;
+        transitioning = false;
+      }, FADE_DURATION);
     }
 
     items.forEach(function (item, i) {
       item.addEventListener('click', function () {
-        setActive(i);
+        if (transitioning) return;
+        setActive(i, true);
       });
     });
 
-    setActive(0);
+    setActive(0, false);
   });
 });

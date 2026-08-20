@@ -5,8 +5,14 @@ import {
   MediaUpload,
   MediaUploadCheck,
 } from '@wordpress/block-editor';
-import { Button } from '@wordpress/components';
+import { Button, SelectControl } from '@wordpress/components';
 import { ImageUploadWithHover } from '../components/ImageUploadWithHover.jsx';
+
+const ACTIVE_COLOR_OPTIONS = [
+  { label: 'Teal (#42B289)', value: '#42B289' },
+  { label: 'Pink (#F2C8F7)', value: '#F2C8F7' },
+  { label: 'Yellow (#FDDD4F)', value: '#FDDD4F' },
+];
 
 registerBlockType('sage/interactive-gallery', {
   edit: ({ attributes, setAttributes }) => {
@@ -97,6 +103,16 @@ registerBlockType('sage/interactive-gallery', {
                     height={160}
                   />
                 </MediaUploadCheck>
+              </div>
+
+              {/* Active Color */}
+              <div className="mb-3">
+                <SelectControl
+                  label="Background Color (on click)"
+                  value={item.activeColor || '#42B289'}
+                  options={ACTIVE_COLOR_OPTIONS}
+                  onChange={(value) => updateItem(index, 'activeColor', value)}
+                />
               </div>
 
               {/* Title */}

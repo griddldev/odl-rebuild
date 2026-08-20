@@ -17,9 +17,9 @@
         "items": {
             "type": "array",
             "default": [
-                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "" },
-                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "" },
-                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "" }
+                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "", "activeColor": "#42B289" },
+                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "", "activeColor": "#F2C8F7" },
+                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "", "activeColor": "#FDDD4F" }
             ]
         }
     }

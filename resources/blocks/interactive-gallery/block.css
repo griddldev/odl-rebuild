@@ -55,14 +55,31 @@
   filter: none;
 }
 
+/* ─── Section background transition ─── */
+
+.interactive-gallery-block {
+  transition: background-color 0.5s ease;
+}
+
 /* ─── Content visibility ─── */
+
+.gallery-content-col {
+  display: grid;
+}
+
+.gallery-content-col > * {
+  grid-area: 1 / 1;
+}
 
 .gallery-title,
 .gallery-description {
-  display: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
 }
 
 .gallery-title.active,
 .gallery-description.active {
-  display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
