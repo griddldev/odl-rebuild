@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
       spaceBetween: 4,
       centeredSlides: true,
       loop: false,
-      initialSlide: 0,
+      initialSlide: 1,
       navigation: {
         prevEl: prevBtn,
         nextEl: nextBtn,
