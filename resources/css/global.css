@@ -8,6 +8,12 @@
   }
 }
 
+@media (max-width: 450px) {
+  .font-display.button-primary {
+    max-width: 315px;
+  }
+}
+
 @utility container {
   margin-inline: auto;
   max-width: 1440px;
