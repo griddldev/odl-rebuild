@@ -40,7 +40,7 @@
                 <div class="gallery-content-col">
                     @foreach ($items as $index => $item)
                         @if (!empty($item['description']))
-                            <p class="text-xlarge text-dark-blue {{ $index === 0 ? 'active' : '' }}"
+                            <p class="gallery-description text-xlarge text-dark-blue {{ $index === 0 ? 'active' : '' }}"
                                 data-index="{{ $index }}">
                                 {!! wp_kses_post($item['description']) !!}
                             </p>
