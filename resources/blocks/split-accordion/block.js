@@ -29,6 +29,25 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
+    // Chevron arrow spread animation
+    var chevronGroups = section.querySelectorAll(".chevron-group");
+    if (chevronGroups.length) {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-spread");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+      chevronGroups.forEach(function (group) {
+        observer.observe(group);
+      });
+    }
+
     // Open first item by default
     var firstItem = section.querySelector(".accordion-item");
     if (firstItem) {

@@ -16,6 +16,33 @@
   padding-left: calc(var(--stagger-step) * 2);
 }
 
+/* ─── Chevron arrows animation ─── */
+
+.split-accordion-block .chevron-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.split-accordion-block .chevron-arrow {
+  transition: transform 1s ease;
+}
+
+.split-accordion-block .chevron-arrow:nth-child(2),
+.split-accordion-block .chevron-arrow:nth-child(3) {
+  position: absolute;
+  left: 0;
+  transform: translateX(0);
+}
+
+.split-accordion-block .chevron-group.is-spread .chevron-arrow:nth-child(2) {
+  transform: translateX(100%);
+}
+
+.split-accordion-block .chevron-group.is-spread .chevron-arrow:nth-child(3) {
+  transform: translateX(200%);
+}
+
 /* ─── Accordion ─── */
 
 .split-accordion-block .accordion-panel {
