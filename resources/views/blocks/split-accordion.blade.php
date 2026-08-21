@@ -71,8 +71,8 @@
                     <div class="text-dark-blue mb-4">{!! wp_kses_post($item['content']) !!}</div>
                   @endif
 
-                  @if (!empty($item['linkText']) && !empty($item['linkUrl']))
-                    <x-button :href="$item['linkUrl']" color="dark-blue">
+                  @if (!empty($item['linkText']) && !$item['link']['isEmpty'])
+                    <x-button :href="$item['link']['url']" :target="$item['link']['target']" color="dark-blue">
                       {!! wp_kses_post($item['linkText']) !!}
                     </x-button>
                   @endif

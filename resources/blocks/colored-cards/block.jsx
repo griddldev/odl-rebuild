@@ -1,22 +1,27 @@
-import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, RichText } from '@wordpress/block-editor';
-import { SelectControl, TextControl } from '@wordpress/components';
+import { registerBlockType } from "@wordpress/blocks";
+import { useBlockProps, RichText } from "@wordpress/block-editor";
+import { ColorPalette, BaseControl } from "@wordpress/components";
+import { useState } from "@wordpress/element";
+import { TabSelector } from "../components/backend/TabSelector.jsx";
+import { LinkPicker } from "../components/backend/LinkPicker.jsx";
+import {
+  BRAND_COLORS,
+  slugFromHex,
+  hexFromSlug,
+} from "../components/backend/brand-palette.js";
 
-const COLOR_OPTIONS = [
-  { label: 'Blue', value: 'blue' },
-  { label: 'Yellow', value: 'yellow' },
-  { label: 'Pink', value: 'pink' },
-  { label: 'Teal', value: 'teal' },
-  { label: 'Off White', value: 'off-white' },
-];
-
-registerBlockType('sage/colored-cards', {
+registerBlockType("sage/colored-cards", {
   edit: ({ attributes, setAttributes }) => {
     const { heading, description, cards } = attributes;
     const blockProps = useBlockProps();
+    const [activeCard, setActiveCard] = useState(0);
 
-    const updateCard = (index, field, value) => {
-      const updated = [...(cards ?? [])];
+    const items = cards ?? [];
+    const index = Math.min(activeCard, Math.max(items.length - 1, 0));
+    const card = items[index] ?? {};
+
+    const updateCard = (field, value) => {
+      const updated = [...items];
       updated[index] = { ...updated[index], [field]: value };
       setAttributes({ cards: updated });
     };
@@ -53,7 +58,7 @@ registerBlockType('sage/colored-cards', {
             value={heading}
             onChange={(value) => setAttributes({ heading: value })}
             placeholder="Enter section heading..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
@@ -65,101 +70,100 @@ registerBlockType('sage/colored-cards', {
             value={description}
             onChange={(value) => setAttributes({ description: value })}
             placeholder="Enter section description..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
-        {/* Cards */}
-        <div className="space-y-6">
-          <p className="text-sm font-semibold">Cards (3 fixed)</p>
-          {(cards ?? []).map((card, index) => (
-            <div
-              key={index}
-              className="rounded-lg border border-gray-200 bg-white p-4"
-            >
-              <p className="mb-3 text-sm font-semibold text-gray-600">
-                Card {index + 1}
-              </p>
+        {/* Cards — fixed at 3 to match the lg:grid-cols-3 layout */}
+        <TabSelector
+          items={items}
+          activeItem={index}
+          setActiveItem={setActiveCard}
+          addItem={null}
+          itemLabelPrefix="Card"
+        />
 
-              <div className="mb-3">
-                <SelectControl
-                  label="Background Color"
-                  value={card.backgroundColor}
-                  options={COLOR_OPTIONS}
-                  onChange={(value) =>
-                    updateCard(index, 'backgroundColor', value)
-                  }
-                />
-              </div>
+        <div className="rounded-lg border border-gray-200 bg-white p-4">
+          <div className="mb-4">
+            <BaseControl __nextHasNoMarginBottom label="Background Color">
+              <ColorPalette
+                colors={BRAND_COLORS}
+                value={hexFromSlug(card.backgroundColor)}
+                onChange={(hex) =>
+                  updateCard("backgroundColor", slugFromHex(hex) || "blue")
+                }
+                disableCustomColors
+                clearable={false}
+              />
+            </BaseControl>
+          </div>
 
-              <div className="mb-3">
-                <p className="mb-2 text-sm font-semibold">Title</p>
-                <RichText
-                  tagName="div"
-                  value={card.title}
-                  onChange={(value) => updateCard(index, 'title', value)}
-                  placeholder="e.g. Educate"
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-              </div>
+          <div className="mb-3">
+            <p className="mb-2 text-sm font-semibold">Title</p>
+            <RichText
+              tagName="div"
+              value={card.title}
+              onChange={(value) => updateCard("title", value)}
+              placeholder="e.g. Educate"
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
 
-              <div className="mb-3">
-                <p className="mb-2 text-sm font-semibold">Subtitle</p>
-                <RichText
-                  tagName="div"
-                  value={card.subtitle}
-                  onChange={(value) => updateCard(index, 'subtitle', value)}
-                  placeholder="Enter card subtitle..."
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-              </div>
+          <div className="mb-3">
+            <p className="mb-2 text-sm font-semibold">Subtitle</p>
+            <RichText
+              tagName="div"
+              value={card.subtitle}
+              onChange={(value) => updateCard("subtitle", value)}
+              placeholder="Enter card subtitle..."
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
 
-              <div className="mb-3">
-                <p className="mb-2 text-sm font-semibold">Body</p>
-                <RichText
-                  tagName="div"
-                  value={card.body}
-                  onChange={(value) => updateCard(index, 'body', value)}
-                  placeholder="Enter card body text..."
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-              </div>
+          <div className="mb-3">
+            <p className="mb-2 text-sm font-semibold">Body</p>
+            <RichText
+              tagName="div"
+              value={card.body}
+              onChange={(value) => updateCard("body", value)}
+              placeholder="Enter card body text..."
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
 
-              <div className="mb-3 rounded border border-gray-100 bg-gray-50 p-3">
-                <p className="mb-2 text-sm font-semibold">Link 1</p>
-                <RichText
-                  tagName="div"
-                  value={card.link1Text}
-                  onChange={(value) => updateCard(index, 'link1Text', value)}
-                  placeholder="e.g. Explore Youth Programs"
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-                <TextControl
-                  label="URL"
-                  value={card.link1Url}
-                  onChange={(value) => updateCard(index, 'link1Url', value)}
-                  placeholder="https://..."
-                />
-              </div>
+          <div className="mb-3 rounded border border-gray-100 bg-gray-50 p-3">
+            <p className="mb-2 text-sm font-semibold">Link 1</p>
+            <RichText
+              tagName="div"
+              value={card.link1Text}
+              onChange={(value) => updateCard("link1Text", value)}
+              placeholder="e.g. Explore Youth Programs"
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+            <LinkPicker
+              className="mt-2"
+              label="Link"
+              value={card.link1}
+              onChange={(value) => updateCard("link1", value)}
+            />
+          </div>
 
-              <div className="rounded border border-gray-100 bg-gray-50 p-3">
-                <p className="mb-2 text-sm font-semibold">Link 2 (optional)</p>
-                <RichText
-                  tagName="div"
-                  value={card.link2Text}
-                  onChange={(value) => updateCard(index, 'link2Text', value)}
-                  placeholder="e.g. Explore Training & Courses"
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-                <TextControl
-                  label="URL"
-                  value={card.link2Url}
-                  onChange={(value) => updateCard(index, 'link2Url', value)}
-                  placeholder="https://..."
-                />
-              </div>
-            </div>
-          ))}
+          <div className="rounded border border-gray-100 bg-gray-50 p-3">
+            <p className="mb-2 text-sm font-semibold">Link 2 (optional)</p>
+            <RichText
+              tagName="div"
+              value={card.link2Text}
+              onChange={(value) => updateCard("link2Text", value)}
+              placeholder="e.g. Explore Training & Courses"
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+            <LinkPicker
+              className="mt-2"
+              label="Link"
+              value={card.link2}
+              onChange={(value) => updateCard("link2", value)}
+            />
+          </div>
         </div>
       </div>
     );

@@ -53,24 +53,13 @@
   </div>
 
   {{-- Bottom navigation bar --}}
-  @php
-    $links = array_filter(
-        [
-            ['label' => $link1Label, 'url' => $link1Url, 'target' => $link1Target],
-            ['label' => $link2Label, 'url' => $link2Url, 'target' => $link2Target],
-            ['label' => $link3Label, 'url' => $link3Url, 'target' => $link3Target],
-        ],
-        fn($link) => !empty($link['label']),
-    );
-  @endphp
-
   @if (count($links) > 0)
     <div
       class="bg-dark-blue absolute bottom-0 z-10 hidden w-[900px] max-w-[900px] translate-y-[50%] self-center lg:flex">
       <div class="container flex flex-wrap justify-center gap-x-16 gap-y-4 py-5">
         @foreach ($links as $link)
           <x-button :href="$link['url']" :target="$link['target']" class="justify-center">
-            {!! wp_kses_post($link['label']) !!}
+            {!! $link['text'] !!}
           </x-button>
         @endforeach
       </div>

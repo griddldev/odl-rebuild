@@ -1,5 +1,5 @@
-import { Button } from '@wordpress/components';
-import { useState } from '@wordpress/element';
+import { Button } from "@wordpress/components";
+import { useState } from "@wordpress/element";
 
 export function ImageUploadWithHover({
   MediaUpload,
@@ -24,7 +24,7 @@ export function ImageUploadWithHover({
           <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/50">
             <MediaUpload
               onSelect={onSelect}
-              allowedTypes={['image']}
+              allowedTypes={["image"]}
               value={imageId}
               render={({ open }) => (
                 <Button variant="secondary" onClick={open}>
@@ -44,14 +44,14 @@ export function ImageUploadWithHover({
   return (
     <MediaUpload
       onSelect={onSelect}
-      allowedTypes={['image']}
+      allowedTypes={["image"]}
       value={imageId}
       render={({ open }) => (
         <div
           className="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-gray-300 hover:border-gray-400"
           style={{ height }}
           onClick={open}
-          onKeyDown={(e) => e.key === 'Enter' && open()}
+          onKeyDown={(e) => e.key === "Enter" && open()}
           role="button"
           tabIndex={0}
         >

@@ -1,6 +1,3 @@
-@php
-  $firstColor = $items[0]['activeColor'] ?? '#42B289';
-@endphp
 <section class="interactive-gallery-block py-14 lg:py-24" style="background-color: {{ esc_attr($firstColor) }}">
   <div class="container relative">
 
@@ -19,7 +16,7 @@
         @foreach ($items as $index => $item)
           @if (!empty($item['imageUrl']))
             <button class="gallery-item {{ $index === 0 ? 'active' : '' }}" data-index="{{ $index }}"
-              data-active-color="{{ esc_attr($item['activeColor'] ?? '#42B289') }}"
+              data-active-color="{{ esc_attr($item['activeColor']) }}"
               aria-label="{{ esc_attr($item['title'] ?? '') }}">
               <img src="{{ esc_url($item['imageUrl']) }}" alt="{{ esc_attr($item['imageAlt'] ?? '') }}"
                 loading="lazy" />

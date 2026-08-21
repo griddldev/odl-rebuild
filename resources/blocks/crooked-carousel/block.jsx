@@ -1,27 +1,35 @@
-import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, RichText } from '@wordpress/block-editor';
-import { Button } from '@wordpress/components';
+import { registerBlockType } from "@wordpress/blocks";
+import { useBlockProps, RichText } from "@wordpress/block-editor";
+import { Button } from "@wordpress/components";
+import { useState } from "@wordpress/element";
+import { TabSelector } from "../components/backend/TabSelector.jsx";
 
-registerBlockType('sage/crooked-carousel', {
+registerBlockType("sage/crooked-carousel", {
   edit: ({ attributes, setAttributes }) => {
     const { heading, subtitle, items } = attributes;
     const blockProps = useBlockProps();
 
-    const updateItem = (index, field, value) => {
-      const updated = [...(items ?? [])];
+    const [activeItem, setActiveItem] = useState(0);
+
+    const list = items ?? [];
+    const index = Math.min(activeItem, Math.max(list.length - 1, 0));
+    const item = list[index] ?? {};
+
+    const updateItem = (field, value) => {
+      const updated = [...list];
       updated[index] = { ...updated[index], [field]: value };
       setAttributes({ items: updated });
     };
 
     const addItem = () => {
-      const updated = [...(items ?? [])];
-      updated.push({ stat: '', description: '' });
+      const updated = [...list];
+      updated.push({ stat: "", description: "" });
       setAttributes({ items: updated });
     };
 
-    const removeItem = (index) => {
-      const updated = (items ?? []).filter((_, i) => i !== index);
-      setAttributes({ items: updated });
+    const removeItem = () => {
+      setAttributes({ items: list.filter((_, i) => i !== index) });
+      setActiveItem(Math.max(index - 1, 0));
     };
 
     return (
@@ -57,7 +65,7 @@ registerBlockType('sage/crooked-carousel', {
             value={heading}
             onChange={(value) => setAttributes({ heading: value })}
             placeholder="e.g. Our Impact"
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
@@ -69,58 +77,50 @@ registerBlockType('sage/crooked-carousel', {
             value={subtitle}
             onChange={(value) => setAttributes({ subtitle: value })}
             placeholder="Enter subtitle..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
         {/* Items */}
-        <div className="space-y-4">
-          <p className="text-sm font-semibold">Carousel Items</p>
-          {(items ?? []).map((item, index) => (
-            <div
-              key={index}
-              className="relative rounded-lg border border-gray-200 bg-white p-4"
-            >
-              <Button
-                isDestructive
-                variant="tertiary"
-                className="absolute top-2 right-2"
-                onClick={() => removeItem(index)}
-              >
-                ✕
+        <TabSelector
+          items={list}
+          activeItem={index}
+          setActiveItem={setActiveItem}
+          addItem={addItem}
+          addButtonLabel="+ Add item"
+          itemLabelPrefix="Item"
+        />
+
+        <div className="rounded-lg border border-gray-200 bg-white p-4">
+          {list.length > 1 && (
+            <div className="mb-2 flex justify-end">
+              <Button isDestructive variant="tertiary" onClick={removeItem}>
+                ✕ Remove item
               </Button>
-
-              <p className="mb-3 text-sm font-semibold text-gray-600">
-                Item {index + 1}
-              </p>
-
-              <div className="mb-3">
-                <p className="mb-2 text-sm font-semibold">Stat</p>
-                <RichText
-                  tagName="div"
-                  value={item.stat}
-                  onChange={(value) => updateItem(index, 'stat', value)}
-                  placeholder="e.g. 19%"
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-              </div>
-
-              <div>
-                <p className="mb-2 text-sm font-semibold">Description</p>
-                <RichText
-                  tagName="div"
-                  value={item.description}
-                  onChange={(value) => updateItem(index, 'description', value)}
-                  placeholder="e.g. Reduction in Indiana's statewide overdose death rate"
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-              </div>
             </div>
-          ))}
+          )}
 
-          <Button variant="secondary" onClick={addItem}>
-            + Add item
-          </Button>
+          <div className="mb-3">
+            <p className="mb-2 text-sm font-semibold">Stat</p>
+            <RichText
+              tagName="div"
+              value={item.stat}
+              onChange={(value) => updateItem("stat", value)}
+              placeholder="e.g. 19%"
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
+
+          <div>
+            <p className="mb-2 text-sm font-semibold">Description</p>
+            <RichText
+              tagName="div"
+              value={item.description}
+              onChange={(value) => updateItem("description", value)}
+              placeholder="e.g. Reduction in Indiana's statewide overdose death rate"
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
         </div>
       </div>
     );

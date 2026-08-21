@@ -1,26 +1,47 @@
 {
-    "apiVersion": 3,
-    "name": "sage/interactive-gallery",
-    "title": "Interactive Gallery",
-    "category": "custom-blocks",
-    "icon": "format-gallery",
-    "description": "Image gallery with content switcher — click a thumbnail to reveal its content.",
-    "textdomain": "sage",
-    "render": "file:./block.php",
-    "viewScript": "file:./block.js",
-    "viewStyle": "file:./block.css",
-    "attributes": {
-        "heading": {
-            "type": "string",
-            "default": ""
+  "apiVersion": 3,
+  "name": "sage/interactive-gallery",
+  "title": "Interactive Gallery",
+  "category": "custom-blocks",
+  "icon": "format-gallery",
+  "description": "Image gallery with content switcher \u2014 click a thumbnail to reveal its content.",
+  "textdomain": "sage",
+  "render": "file:./block.php",
+  "viewScript": "file:./block.js",
+  "viewStyle": "file:./block.css",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        {
+          "imageUrl": "",
+          "imageId": null,
+          "imageAlt": "",
+          "title": "",
+          "description": "",
+          "activeColor": "teal"
         },
-        "items": {
-            "type": "array",
-            "default": [
-                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "", "activeColor": "#42B289" },
-                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "", "activeColor": "#F2C8F7" },
-                { "imageUrl": "", "imageId": null, "imageAlt": "", "title": "", "description": "", "activeColor": "#FDDD4F" }
-            ]
+        {
+          "imageUrl": "",
+          "imageId": null,
+          "imageAlt": "",
+          "title": "",
+          "description": "",
+          "activeColor": "pink"
+        },
+        {
+          "imageUrl": "",
+          "imageId": null,
+          "imageAlt": "",
+          "title": "",
+          "description": "",
+          "activeColor": "yellow"
         }
+      ]
     }
+  }
 }

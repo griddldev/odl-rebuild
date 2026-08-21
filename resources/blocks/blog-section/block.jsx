@@ -1,14 +1,11 @@
-import { registerBlockType } from '@wordpress/blocks';
-import {
-  useBlockProps,
-  __experimentalLinkControl as LinkControl,
-} from '@wordpress/block-editor';
-import { TextControl } from '@wordpress/components';
+import { registerBlockType } from "@wordpress/blocks";
+import { useBlockProps } from "@wordpress/block-editor";
+import { TextControl } from "@wordpress/components";
+import { LinkPicker } from "../components/backend/LinkPicker.jsx";
 
-registerBlockType('sage/blog-section', {
+registerBlockType("sage/blog-section", {
   edit: ({ attributes, setAttributes }) => {
-    const { title, featuredCategorySlug, allBlogsUrl, allBlogsTarget } =
-      attributes;
+    const { title, featuredCategorySlug, allBlogsLink } = attributes;
     const blockProps = useBlockProps();
 
     return (
@@ -50,22 +47,10 @@ registerBlockType('sage/blog-section', {
           </div>
           <div>
             <p className="mb-2 text-sm font-medium">"See All Blogs" Link</p>
-            <LinkControl
-              value={
-                allBlogsUrl
-                  ? {
-                      url: allBlogsUrl,
-                      opensInNewTab: allBlogsTarget === '_blank',
-                    }
-                  : undefined
-              }
-              onChange={(nextValue = {}) => {
-                setAttributes({
-                  allBlogsUrl: nextValue.url || '',
-                  allBlogsTarget: nextValue.opensInNewTab ? '_blank' : '_self',
-                });
-              }}
-              settings={[{ id: 'opensInNewTab', title: 'Open in new tab' }]}
+            <LinkPicker
+              value={allBlogsLink}
+              onChange={(value) => setAttributes({ allBlogsLink: value })}
+              settings={[{ id: "opensInNewTab", title: "Open in new tab" }]}
             />
           </div>
         </div>

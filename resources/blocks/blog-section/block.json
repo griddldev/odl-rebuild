@@ -1,29 +1,28 @@
 {
-    "apiVersion": 3,
-    "name": "sage/blog-section",
-    "title": "Blog Section",
-    "category": "sjc",
-    "icon": "admin-post",
-    "description": "Featured blog post and latest blog posts grid",
-    "textdomain": "sage",
-    "render": "file:./block.php",
-    "viewStyle": "file:./block.css",
-    "attributes": {
-        "title": {
-            "type": "string",
-            "default": "Blogs"
-        },
-        "featuredCategorySlug": {
-            "type": "string",
-            "default": "featured"
-        },
-        "allBlogsUrl": {
-            "type": "string",
-            "default": ""
-        },
-        "allBlogsTarget": {
-            "type": "string",
-            "default": "_self"
-        }
+  "apiVersion": 3,
+  "name": "sage/blog-section",
+  "title": "Blog Section",
+  "category": "sjc",
+  "icon": "admin-post",
+  "description": "Featured blog post and latest blog posts grid",
+  "textdomain": "sage",
+  "render": "file:./block.php",
+  "viewStyle": "file:./block.css",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Blogs"
+    },
+    "featuredCategorySlug": {
+      "type": "string",
+      "default": "featured"
+    },
+    "allBlogsLink": {
+      "type": "object",
+      "default": {
+        "url": "",
+        "opensInNewTab": false
+      }
     }
+  }
 }

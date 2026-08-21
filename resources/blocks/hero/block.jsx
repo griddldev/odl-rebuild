@@ -1,14 +1,15 @@
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType } from "@wordpress/blocks";
 import {
   useBlockProps,
   MediaUpload,
   MediaUploadCheck,
   RichText,
-} from '@wordpress/block-editor';
-import { TextControl, Button } from '@wordpress/components';
-import { ImageUploadWithHover } from '../components/ImageUploadWithHover.jsx';
+} from "@wordpress/block-editor";
+import { Button } from "@wordpress/components";
+import { ImageUploadWithHover } from "../components/backend/ImageUploadWithHover.jsx";
+import { LinkPicker } from "../components/backend/LinkPicker.jsx";
 
-registerBlockType('sage/hero', {
+registerBlockType("sage/hero", {
   edit: ({ attributes, setAttributes }) => {
     const {
       heading,
@@ -16,12 +17,12 @@ registerBlockType('sage/hero', {
       backgroundImageId,
       videoUrl,
       videoId,
-      link1Label,
-      link1Url,
-      link2Label,
-      link2Url,
-      link3Label,
-      link3Url,
+      link1Text,
+      link1,
+      link2Text,
+      link2,
+      link3Text,
+      link3,
     } = attributes;
 
     const blockProps = useBlockProps();
@@ -59,7 +60,7 @@ registerBlockType('sage/hero', {
             value={heading}
             onChange={(value) => setAttributes({ heading: value })}
             placeholder="Enter hero heading..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
@@ -75,16 +76,16 @@ registerBlockType('sage/hero', {
               imageId={backgroundImageId}
               onSelect={(media) =>
                 setAttributes({
-                  backgroundImageUrl: media?.url || '',
+                  backgroundImageUrl: media?.url || "",
                   backgroundImageId: media?.id ?? null,
-                  backgroundImageAlt: media?.alt ?? '',
+                  backgroundImageAlt: media?.alt ?? "",
                 })
               }
               onRemove={() =>
                 setAttributes({
-                  backgroundImageUrl: '',
+                  backgroundImageUrl: "",
                   backgroundImageId: null,
-                  backgroundImageAlt: '',
+                  backgroundImageAlt: "",
                 })
               }
               height={200}
@@ -109,7 +110,7 @@ registerBlockType('sage/hero', {
                 <Button
                   isDestructive
                   variant="secondary"
-                  onClick={() => setAttributes({ videoUrl: '', videoId: null })}
+                  onClick={() => setAttributes({ videoUrl: "", videoId: null })}
                 >
                   Remove video
                 </Button>
@@ -120,18 +121,18 @@ registerBlockType('sage/hero', {
               <MediaUpload
                 onSelect={(media) =>
                   setAttributes({
-                    videoUrl: media?.url || '',
+                    videoUrl: media?.url || "",
                     videoId: media?.id ?? null,
                   })
                 }
-                allowedTypes={['video']}
+                allowedTypes={["video"]}
                 value={videoId}
                 render={({ open }) => (
                   <div
                     className="flex cursor-pointer items-center justify-center rounded-lg border-2 border-dashed border-gray-300 hover:border-gray-400"
                     style={{ height: 120 }}
                     onClick={open}
-                    onKeyDown={(e) => e.key === 'Enter' && open()}
+                    onKeyDown={(e) => e.key === "Enter" && open()}
                     role="button"
                     tabIndex={0}
                   >
@@ -147,33 +148,31 @@ registerBlockType('sage/hero', {
         <div className="space-y-4">
           <p className="text-sm font-semibold">Navigation Links (3 fixed)</p>
           {[
-            { label: link1Label, url: link1Url, prefix: 'link1', n: 1 },
-            { label: link2Label, url: link2Url, prefix: 'link2', n: 2 },
-            { label: link3Label, url: link3Url, prefix: 'link3', n: 3 },
-          ].map((link) => (
+            { text: link1Text, link: link1, prefix: "link1", n: 1 },
+            { text: link2Text, link: link2, prefix: "link2", n: 2 },
+            { text: link3Text, link: link3, prefix: "link3", n: 3 },
+          ].map((item) => (
             <div
-              key={link.prefix}
+              key={item.prefix}
               className="flex gap-3 rounded-lg border border-gray-200 bg-white p-3"
             >
               <div className="flex-1">
-                <p className="mb-2 text-sm font-semibold">Label {link.n}</p>
+                <p className="mb-2 text-sm font-semibold">Label {item.n}</p>
                 <RichText
                   tagName="div"
-                  value={link.label}
+                  value={item.text}
                   onChange={(value) =>
-                    setAttributes({ [`${link.prefix}Label`]: value })
+                    setAttributes({ [`${item.prefix}Text`]: value })
                   }
-                  placeholder={`Enter label ${link.n}...`}
-                  allowedFormats={['core/bold', 'core/italic']}
+                  placeholder={`Enter label ${item.n}...`}
+                  allowedFormats={["core/bold", "core/italic"]}
                 />
               </div>
-              <TextControl
-                label="URL"
-                value={link.url}
-                onChange={(value) =>
-                  setAttributes({ [`${link.prefix}Url`]: value })
-                }
+              <LinkPicker
                 className="flex-1"
+                label="Link"
+                value={item.link}
+                onChange={(value) => setAttributes({ [item.prefix]: value })}
               />
             </div>
           ))}

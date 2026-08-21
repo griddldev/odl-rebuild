@@ -1,11 +1,11 @@
 {
-    "apiVersion": 3,
-    "name": "sage/styleguide",
-    "title": "Styleguide",
-    "category": "custom-blocks",
-    "icon": "art",
-    "description": "Displays the full design system: colors, typography, and text styles.",
-    "textdomain": "sage",
-    "render": "file:./block.php",
-    "attributes": {}
+  "apiVersion": 3,
+  "name": "sage/styleguide",
+  "title": "Styleguide",
+  "category": "custom-blocks",
+  "icon": "art",
+  "description": "Displays the full design system: colors, typography, and text styles.",
+  "textdomain": "sage",
+  "render": "file:./block.php",
+  "attributes": {}
 }

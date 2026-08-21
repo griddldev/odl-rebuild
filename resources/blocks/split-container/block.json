@@ -1,56 +1,62 @@
 {
-    "apiVersion": 3,
-    "name": "sage/split-container",
-    "title": "Split Container",
-    "category": "custom-blocks",
-    "icon": "columns",
-    "description": "Two-column section with image on the left and text content with CTA links on the right.",
-    "textdomain": "sage",
-    "render": "file:./block.php",
-    "attributes": {
-        "imageUrl": {
-            "type": "string",
-            "default": ""
-        },
-        "imageId": {
-            "type": "number",
-            "default": null
-        },
-        "imageAlt": {
-            "type": "string",
-            "default": ""
-        },
-        "heading": {
-            "type": "string",
-            "default": ""
-        },
-        "subtitle": {
-            "type": "string",
-            "default": ""
-        },
-        "mobileTitle": {
-            "type": "string",
-            "default": ""
-        },
-        "body": {
-            "type": "string",
-            "default": ""
-        },
-        "link1Text": {
-            "type": "string",
-            "default": ""
-        },
-        "link1Url": {
-            "type": "string",
-            "default": ""
-        },
-        "link2Text": {
-            "type": "string",
-            "default": ""
-        },
-        "link2Url": {
-            "type": "string",
-            "default": ""
-        }
+  "apiVersion": 3,
+  "name": "sage/split-container",
+  "title": "Split Container",
+  "category": "custom-blocks",
+  "icon": "columns",
+  "description": "Two-column section with image on the left and text content with CTA links on the right.",
+  "textdomain": "sage",
+  "render": "file:./block.php",
+  "attributes": {
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageId": {
+      "type": "number",
+      "default": null
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "default": ""
+    },
+    "mobileTitle": {
+      "type": "string",
+      "default": ""
+    },
+    "body": {
+      "type": "string",
+      "default": ""
+    },
+    "link1Text": {
+      "type": "string",
+      "default": ""
+    },
+    "link2Text": {
+      "type": "string",
+      "default": ""
+    },
+    "link1": {
+      "type": "object",
+      "default": {
+        "url": "",
+        "opensInNewTab": false
+      }
+    },
+    "link2": {
+      "type": "object",
+      "default": {
+        "url": "",
+        "opensInNewTab": false
+      }
     }
+  }
 }

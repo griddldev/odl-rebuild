@@ -8,3 +8,4 @@ npm-debug.log
 yarn.lock
 /StyleguideScreenshots/
 resources/fonts/**/*.zip
+/_backup/

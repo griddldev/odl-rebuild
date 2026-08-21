@@ -1,13 +1,3 @@
-@php
-  $colorMap = [
-      'blue' => 'bg-blue',
-      'yellow' => 'bg-yellow',
-      'pink' => 'bg-pink',
-      'teal' => 'bg-teal',
-      'off-white' => 'bg-off-white',
-  ];
-@endphp
-
 <section class="colored-cards-block bg-white py-14 lg:py-28">
   <div class="container">
 
@@ -27,10 +17,7 @@
     @if (!empty($cards))
       <div class="grid grid-cols-1 gap-14 lg:grid-cols-3">
         @foreach ($cards as $card)
-          @php
-            $bgClass = $colorMap[$card['backgroundColor'] ?? 'blue'] ?? 'bg-blue';
-          @endphp
-          <div class="{{ $bgClass }} flex flex-col justify-between p-8 lg:p-10">
+          <div class="bg-{{ $card['backgroundColor'] }} flex flex-col justify-between p-8 lg:p-10">
             <div>
               @if (!empty($card['title']))
                 <h3 class="heading-3 text-dark-blue mb-6">{!! wp_kses_post($card['title']) !!}</h3>
@@ -46,16 +33,16 @@
             </div>
 
             <div class="mt-auto flex flex-col gap-3">
-              @if (!empty($card['link1Text']) && !empty($card['link1Url']))
-                <a href="{{ esc_url($card['link1Url']) }}"
+              @if (!empty($card['link1Text']) && !$card['link1']['isEmpty'])
+                <a href="{{ esc_url($card['link1']['url']) }}" target="{{ $card['link1']['target'] }}"
                   class="button-secondary text-dark-blue decoration-dark-blue decoration-2 underline-offset-8">
-                  {!! wp_kses_post($card['link1Text']) !!}
+                  {!! $card['link1Text'] !!}
                 </a>
               @endif
-              @if (!empty($card['link2Text']) && !empty($card['link2Url']))
-                <a href="{{ esc_url($card['link2Url']) }}"
+              @if (!empty($card['link2Text']) && !$card['link2']['isEmpty'])
+                <a href="{{ esc_url($card['link2']['url']) }}" target="{{ $card['link2']['target'] }}"
                   class="button-secondary text-dark-blue decoration-dark-blue decoration-2 underline-offset-8">
-                  {!! wp_kses_post($card['link2Text']) !!}
+                  {!! $card['link2Text'] !!}
                 </a>
               @endif
             </div>

@@ -2,8 +2,7 @@
 
 $title                = $attributes['title'] ?? 'Blogs';
 $featuredCategorySlug = $attributes['featuredCategorySlug'] ?? 'featured';
-$allBlogsUrl          = $attributes['allBlogsUrl'] ?? '';
-$allBlogsTarget       = $attributes['allBlogsTarget'] ?? '_self';
+$allBlogsLink         = \App\Blocks\BlockAttributes::link($attributes['allBlogsLink'] ?? []);
 
 // Featured post: latest post in the "featured" category
 $featuredPost = null;
@@ -62,7 +61,6 @@ echo view('blocks.blog-section', [
     'title'        => $title,
     'featuredPost' => $featuredPost,
     'latestPosts'  => $latestPosts,
-    'allBlogsUrl'  => $allBlogsUrl,
-    'allBlogsTarget' => $allBlogsTarget,
+    'allBlogsLink' => $allBlogsLink,
     'cardColors'   => $cardColors,
 ])->render();

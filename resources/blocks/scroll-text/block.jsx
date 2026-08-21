@@ -1,7 +1,7 @@
-import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { registerBlockType } from "@wordpress/blocks";
+import { useBlockProps, RichText } from "@wordpress/block-editor";
 
-registerBlockType('sage/scroll-text', {
+registerBlockType("sage/scroll-text", {
   edit: ({ attributes, setAttributes }) => {
     const { content } = attributes;
     const blockProps = useBlockProps();
@@ -40,7 +40,7 @@ registerBlockType('sage/scroll-text', {
             value={content}
             onChange={(value) => setAttributes({ content: value })}
             placeholder="Enter text that will reveal on scroll..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
       </div>

@@ -29,13 +29,13 @@
         @endif
 
         <div class="flex flex-col gap-4">
-          @if (!empty($link1Text) && !empty($link1Url))
-            <x-button :href="$link1Url" color="dark-blue">
+          @if (!empty($link1Text) && !$link1['isEmpty'])
+            <x-button :href="$link1['url']" :target="$link1['target']" color="dark-blue">
               {!! wp_kses_post($link1Text) !!}
             </x-button>
           @endif
-          @if (!empty($link2Text) && !empty($link2Url))
-            <x-button :href="$link2Url" color="dark-blue">
+          @if (!empty($link2Text) && !$link2['isEmpty'])
+            <x-button :href="$link2['url']" :target="$link2['target']" color="dark-blue">
               {!! wp_kses_post($link2Text) !!}
             </x-button>
           @endif

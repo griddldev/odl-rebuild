@@ -1,28 +1,73 @@
 {
-    "apiVersion": 3,
-    "name": "sage/colored-cards",
-    "title": "Colored Cards",
-    "category": "custom-blocks",
-    "icon": "columns",
-    "description": "Section with heading, description and three colored cards with links.",
-    "textdomain": "sage",
-    "render": "file:./block.php",
-    "attributes": {
-        "heading": {
-            "type": "string",
-            "default": ""
+  "apiVersion": 3,
+  "name": "sage/colored-cards",
+  "title": "Colored Cards",
+  "category": "custom-blocks",
+  "icon": "columns",
+  "description": "Section with heading, description and three colored cards with links.",
+  "textdomain": "sage",
+  "render": "file:./block.php",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "cards": {
+      "type": "array",
+      "default": [
+        {
+          "backgroundColor": "blue",
+          "title": "",
+          "subtitle": "",
+          "body": "",
+          "link1Text": "",
+          "link1": {
+            "url": "",
+            "opensInNewTab": false
+          },
+          "link2Text": "",
+          "link2": {
+            "url": "",
+            "opensInNewTab": false
+          }
         },
-        "description": {
-            "type": "string",
-            "default": ""
+        {
+          "backgroundColor": "yellow",
+          "title": "",
+          "subtitle": "",
+          "body": "",
+          "link1Text": "",
+          "link1": {
+            "url": "",
+            "opensInNewTab": false
+          },
+          "link2Text": "",
+          "link2": {
+            "url": "",
+            "opensInNewTab": false
+          }
         },
-        "cards": {
-            "type": "array",
-            "default": [
-                { "backgroundColor": "blue", "title": "", "subtitle": "", "body": "", "link1Text": "", "link1Url": "", "link2Text": "", "link2Url": "" },
-                { "backgroundColor": "yellow", "title": "", "subtitle": "", "body": "", "link1Text": "", "link1Url": "", "link2Text": "", "link2Url": "" },
-                { "backgroundColor": "pink", "title": "", "subtitle": "", "body": "", "link1Text": "", "link1Url": "", "link2Text": "", "link2Url": "" }
-            ]
+        {
+          "backgroundColor": "pink",
+          "title": "",
+          "subtitle": "",
+          "body": "",
+          "link1Text": "",
+          "link1": {
+            "url": "",
+            "opensInNewTab": false
+          },
+          "link2Text": "",
+          "link2": {
+            "url": "",
+            "opensInNewTab": false
+          }
         }
+      ]
     }
+  }
 }

@@ -1,13 +1,13 @@
-document.addEventListener('DOMContentLoaded', function () {
-  var blocks = document.querySelectorAll('.scroll-text-block');
+document.addEventListener("DOMContentLoaded", function () {
+  var blocks = document.querySelectorAll(".scroll-text-block");
 
   blocks.forEach(function (block) {
-    var content = block.querySelector('.scroll-text-content');
+    var content = block.querySelector(".scroll-text-content");
     if (!content) return;
 
     wrapWords(content);
 
-    var words = content.querySelectorAll('.scroll-word');
+    var words = content.querySelectorAll(".scroll-word");
     var totalWords = words.length;
     if (!totalWords) return;
 
@@ -21,13 +21,13 @@ document.addEventListener('DOMContentLoaded', function () {
       for (var i = 0; i < totalWords; i++) {
         var threshold = (i / totalWords) * 0.8 + 0.1;
         words[i].setAttribute(
-          'data-revealed',
-          progress > threshold ? 'true' : 'false',
+          "data-revealed",
+          progress > threshold ? "true" : "false",
         );
       }
     }
 
-    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener("scroll", update, { passive: true });
     update();
   });
 });
@@ -51,8 +51,8 @@ function wrapWords(element) {
       if (/^\s+$/.test(part)) {
         fragment.appendChild(document.createTextNode(part));
       } else if (part) {
-        var span = document.createElement('span');
-        span.className = 'scroll-word';
+        var span = document.createElement("span");
+        span.className = "scroll-word";
         span.textContent = part;
         fragment.appendChild(span);
       }

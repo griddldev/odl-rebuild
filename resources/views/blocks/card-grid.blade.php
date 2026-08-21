@@ -1,13 +1,3 @@
-@php
-  $colorMap = [
-      'blue' => 'bg-blue',
-      'yellow' => 'bg-yellow',
-      'pink' => 'bg-pink',
-      'teal' => 'bg-teal',
-      'off-white' => 'bg-off-white',
-  ];
-@endphp
-
 <section class="card-grid-block overflow-hidden bg-white py-14 lg:py-28">
   <div class="container">
     <div class="flex flex-col gap-16 lg:flex-row">
@@ -39,11 +29,8 @@
       @if (!empty($cards))
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:w-2/3">
           @foreach ($cards as $card)
-            @php
-              $bgClass = $colorMap[$card['backgroundColor'] ?? 'blue'] ?? 'bg-blue';
-            @endphp
             <div
-              class="{{ $bgClass }} flex flex-col justify-between overflow-hidden rounded-sm p-8 md:aspect-square lg:p-10">
+              class="bg-{{ $card['backgroundColor'] }} flex flex-col justify-between overflow-hidden rounded-sm p-8 md:aspect-square lg:p-10">
               <div>
                 @if (!empty($card['title']))
                   <h3 class="heading-3 text-dark-blue mb-4">{!! wp_kses_post($card['title']) !!}</h3>
@@ -58,10 +45,10 @@
                 @endif
               </div>
 
-              @if (!empty($card['linkText']) && !empty($card['linkUrl']))
-                <a href="{{ esc_url($card['linkUrl']) }}"
+              @if (!empty($card['linkText']) && !$card['link']['isEmpty'])
+                <a href="{{ esc_url($card['link']['url']) }}" target="{{ $card['link']['target'] }}"
                   class="button-secondary text-dark-blue decoration-2 underline-offset-8">
-                  {!! wp_kses_post($card['linkText']) !!}
+                  {!! $card['linkText'] !!}
                 </a>
               @endif
             </div>

@@ -1,30 +1,30 @@
 {
-    "apiVersion": 3,
-    "name": "sage/crooked-carousel",
-    "title": "Crooked Carousel",
-    "category": "custom-blocks",
-    "icon": "slides",
-    "description": "Stats carousel with tilted white cards on a colored background.",
-    "textdomain": "sage",
-    "render": "file:./block.php",
-    "viewScript": "file:./block.js",
-    "viewStyle": "file:./block.css",
-    "attributes": {
-        "heading": {
-            "type": "string",
-            "default": ""
-        },
-        "subtitle": {
-            "type": "string",
-            "default": ""
-        },
-        "items": {
-            "type": "array",
-            "default": [
-                { "stat": "", "description": "" },
-                { "stat": "", "description": "" },
-                { "stat": "", "description": "" }
-            ]
-        }
+  "apiVersion": 3,
+  "name": "sage/crooked-carousel",
+  "title": "Crooked Carousel",
+  "category": "custom-blocks",
+  "icon": "slides",
+  "description": "Stats carousel with tilted white cards on a colored background.",
+  "textdomain": "sage",
+  "render": "file:./block.php",
+  "viewScript": "file:./block.js",
+  "viewStyle": "file:./block.css",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "default": ""
+    },
+    "items": {
+      "type": "array",
+      "default": [
+        { "stat": "", "description": "" },
+        { "stat": "", "description": "" },
+        { "stat": "", "description": "" }
+      ]
     }
+  }
 }

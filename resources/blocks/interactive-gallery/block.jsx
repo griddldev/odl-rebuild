@@ -1,35 +1,37 @@
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType } from "@wordpress/blocks";
 import {
   useBlockProps,
   RichText,
   MediaUpload,
   MediaUploadCheck,
-} from '@wordpress/block-editor';
-import { Button, SelectControl } from '@wordpress/components';
-import { ImageUploadWithHover } from '../components/ImageUploadWithHover.jsx';
+} from "@wordpress/block-editor";
+import { ColorPalette, BaseControl } from "@wordpress/components";
+import { useState } from "@wordpress/element";
+import { ImageUploadWithHover } from "../components/backend/ImageUploadWithHover.jsx";
+import { TabSelector } from "../components/backend/TabSelector.jsx";
+import {
+  BRAND_COLORS,
+  slugFromHex,
+  hexFromSlug,
+} from "../components/backend/brand-palette.js";
 
-const ACTIVE_COLOR_OPTIONS = [
-  { label: 'Teal (#42B289)', value: '#42B289' },
-  { label: 'Pink (#F2C8F7)', value: '#F2C8F7' },
-  { label: 'Yellow (#FDDD4F)', value: '#FDDD4F' },
-];
-
-registerBlockType('sage/interactive-gallery', {
+registerBlockType("sage/interactive-gallery", {
   edit: ({ attributes, setAttributes }) => {
     const { heading, items } = attributes;
     const blockProps = useBlockProps();
+    const [activeItem, setActiveItem] = useState(0);
 
-    const updateItem = (index, field, value) => {
-      const updated = [...(items ?? [])];
-      updated[index] = { ...updated[index], [field]: value };
-      setAttributes({ items: updated });
-    };
+    const list = items ?? [];
+    const index = Math.min(activeItem, Math.max(list.length - 1, 0));
+    const item = list[index] ?? {};
 
-    const updateItemMany = (index, data) => {
-      const updated = [...(items ?? [])];
+    const updateItemMany = (data) => {
+      const updated = [...list];
       updated[index] = { ...updated[index], ...data };
       setAttributes({ items: updated });
     };
+
+    const updateItem = (field, value) => updateItemMany({ [field]: value });
 
     return (
       <div
@@ -63,83 +65,87 @@ registerBlockType('sage/interactive-gallery', {
             value={heading}
             onChange={(value) => setAttributes({ heading: value })}
             placeholder="Enter section heading..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
-        {/* 3 fixed items */}
-        <div className="space-y-6">
-          <p className="text-sm font-semibold">Items (3 fixed)</p>
-          {(items ?? []).map((item, index) => (
-            <div
-              key={index}
-              className="rounded-lg border border-gray-200 bg-white p-4"
+        {/* Items — fixed at 3 to match the gallery layout */}
+        <TabSelector
+          items={list}
+          activeItem={index}
+          setActiveItem={setActiveItem}
+          addItem={null}
+          itemLabelPrefix="Item"
+        />
+
+        <div className="rounded-lg border border-gray-200 bg-white p-4">
+          {/* Image */}
+          <div className="mb-4">
+            <MediaUploadCheck>
+              <ImageUploadWithHover
+                MediaUpload={MediaUpload}
+                imageUrl={item.imageUrl}
+                imageId={item.imageId}
+                onSelect={(media) =>
+                  updateItemMany({
+                    imageUrl: media?.url || "",
+                    imageId: media?.id ?? null,
+                    imageAlt: media?.alt ?? "",
+                  })
+                }
+                onRemove={() =>
+                  updateItemMany({
+                    imageUrl: "",
+                    imageId: null,
+                    imageAlt: "",
+                  })
+                }
+                height={160}
+              />
+            </MediaUploadCheck>
+          </div>
+
+          {/* Active Color */}
+          <div className="mb-4">
+            <BaseControl
+              __nextHasNoMarginBottom
+              label="Background Color (on click)"
             >
-              <p className="mb-3 text-sm font-semibold text-gray-600">
-                Item {index + 1}
-              </p>
+              <ColorPalette
+                colors={BRAND_COLORS}
+                value={hexFromSlug(item.activeColor)}
+                onChange={(hex) =>
+                  updateItem("activeColor", slugFromHex(hex) || "teal")
+                }
+                disableCustomColors
+                clearable={false}
+              />
+            </BaseControl>
+          </div>
 
-              {/* Image */}
-              <div className="mb-4">
-                <MediaUploadCheck>
-                  <ImageUploadWithHover
-                    MediaUpload={MediaUpload}
-                    imageUrl={item.imageUrl}
-                    imageId={item.imageId}
-                    onSelect={(media) =>
-                      updateItemMany(index, {
-                        imageUrl: media?.url || '',
-                        imageId: media?.id ?? null,
-                        imageAlt: media?.alt ?? '',
-                      })
-                    }
-                    onRemove={() =>
-                      updateItemMany(index, {
-                        imageUrl: '',
-                        imageId: null,
-                        imageAlt: '',
-                      })
-                    }
-                    height={160}
-                  />
-                </MediaUploadCheck>
-              </div>
+          {/* Title */}
+          <div className="mb-3">
+            <p className="mb-2 text-sm font-semibold">Title</p>
+            <RichText
+              tagName="div"
+              value={item.title}
+              onChange={(value) => updateItem("title", value)}
+              placeholder="Enter item title..."
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
 
-              {/* Active Color */}
-              <div className="mb-3">
-                <SelectControl
-                  label="Background Color (on click)"
-                  value={item.activeColor || '#42B289'}
-                  options={ACTIVE_COLOR_OPTIONS}
-                  onChange={(value) => updateItem(index, 'activeColor', value)}
-                />
-              </div>
-
-              {/* Title */}
-              <div className="mb-3">
-                <p className="mb-2 text-sm font-semibold">Title</p>
-                <RichText
-                  tagName="div"
-                  value={item.title}
-                  onChange={(value) => updateItem(index, 'title', value)}
-                  placeholder="Enter item title..."
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-              </div>
-
-              {/* Description */}
-              <div>
-                <p className="mb-2 text-sm font-semibold">Description</p>
-                <RichText
-                  tagName="div"
-                  value={item.description}
-                  onChange={(value) => updateItem(index, 'description', value)}
-                  placeholder="Enter item description..."
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-              </div>
-            </div>
-          ))}
+          {/* Description */}
+          <div>
+            <p className="mb-2 text-sm font-semibold">Description</p>
+            <RichText
+              tagName="div"
+              value={item.description}
+              onChange={(value) => updateItem("description", value)}
+              placeholder="Enter item description..."
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
         </div>
       </div>
     );

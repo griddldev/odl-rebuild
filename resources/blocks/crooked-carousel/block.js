@@ -1,12 +1,12 @@
-document.addEventListener('DOMContentLoaded', function () {
-  var blocks = document.querySelectorAll('.crooked-carousel-block');
+document.addEventListener("DOMContentLoaded", function () {
+  var blocks = document.querySelectorAll(".crooked-carousel-block");
 
   blocks.forEach(function (block) {
-    var container = block.querySelector('.swiper');
+    var container = block.querySelector(".swiper");
     if (!container) return;
 
-    var prevBtn = block.querySelector('.carousel-prev');
-    var nextBtn = block.querySelector('.carousel-next');
+    var prevBtn = block.querySelector(".carousel-prev");
+    var nextBtn = block.querySelector(".carousel-next");
 
     new window.Swiper(container, {
       slidesPerView: 1.4,

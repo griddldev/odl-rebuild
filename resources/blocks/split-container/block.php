@@ -1,25 +1,16 @@
 <?php
 
-$imageUrl = $attributes['imageUrl'] ?? '';
-$imageAlt = $attributes['imageAlt'] ?? '';
-$heading = $attributes['heading'] ?? '';
-$subtitle = $attributes['subtitle'] ?? '';
-$mobileTitle = $attributes['mobileTitle'] ?? '';
-$body = $attributes['body'] ?? '';
-$link1Text = $attributes['link1Text'] ?? '';
-$link1Url = $attributes['link1Url'] ?? '';
-$link2Text = $attributes['link2Text'] ?? '';
-$link2Url = $attributes['link2Url'] ?? '';
+use App\Blocks\BlockAttributes;
 
 echo view('blocks.split-container', [
-    'imageUrl' => $imageUrl,
-    'imageAlt' => $imageAlt,
-    'heading' => $heading,
-    'subtitle' => $subtitle,
-    'mobileTitle' => $mobileTitle,
-    'body' => $body,
-    'link1Text' => $link1Text,
-    'link1Url' => $link1Url,
-    'link2Text' => $link2Text,
-    'link2Url' => $link2Url,
+    'imageUrl' => esc_url_raw($attributes['imageUrl'] ?? ''),
+    'imageAlt' => sanitize_text_field($attributes['imageAlt'] ?? ''),
+    'heading' => wp_kses_post($attributes['heading'] ?? ''),
+    'subtitle' => wp_kses_post($attributes['subtitle'] ?? ''),
+    'mobileTitle' => wp_kses_post($attributes['mobileTitle'] ?? ''),
+    'body' => wp_kses_post($attributes['body'] ?? ''),
+    'link1Text' => wp_kses_post($attributes['link1Text'] ?? ''),
+    'link1' => BlockAttributes::link($attributes['link1'] ?? []),
+    'link2Text' => wp_kses_post($attributes['link2Text'] ?? ''),
+    'link2' => BlockAttributes::link($attributes['link2'] ?? []),
 ])->render();

@@ -1,14 +1,14 @@
-import { registerBlockType } from '@wordpress/blocks';
+import { registerBlockType } from "@wordpress/blocks";
 import {
   useBlockProps,
   RichText,
   MediaUpload,
   MediaUploadCheck,
-} from '@wordpress/block-editor';
-import { TextControl } from '@wordpress/components';
-import { ImageUploadWithHover } from '../components/ImageUploadWithHover.jsx';
+} from "@wordpress/block-editor";
+import { ImageUploadWithHover } from "../components/backend/ImageUploadWithHover.jsx";
+import { LinkPicker } from "../components/backend/LinkPicker.jsx";
 
-registerBlockType('sage/split-container', {
+registerBlockType("sage/split-container", {
   edit: ({ attributes, setAttributes }) => {
     const {
       imageUrl,
@@ -18,9 +18,9 @@ registerBlockType('sage/split-container', {
       mobileTitle,
       body,
       link1Text,
-      link1Url,
+      link1,
       link2Text,
-      link2Url,
+      link2,
     } = attributes;
     const blockProps = useBlockProps();
 
@@ -57,16 +57,16 @@ registerBlockType('sage/split-container', {
               imageId={imageId}
               onSelect={(media) =>
                 setAttributes({
-                  imageUrl: media?.url || '',
+                  imageUrl: media?.url || "",
                   imageId: media?.id ?? null,
-                  imageAlt: media?.alt ?? '',
+                  imageAlt: media?.alt ?? "",
                 })
               }
               onRemove={() =>
                 setAttributes({
-                  imageUrl: '',
+                  imageUrl: "",
                   imageId: null,
-                  imageAlt: '',
+                  imageAlt: "",
                 })
               }
               height={200}
@@ -82,7 +82,7 @@ registerBlockType('sage/split-container', {
             value={heading}
             onChange={(value) => setAttributes({ heading: value })}
             placeholder="Enter heading..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
@@ -94,7 +94,7 @@ registerBlockType('sage/split-container', {
             value={subtitle}
             onChange={(value) => setAttributes({ subtitle: value })}
             placeholder="Enter subtitle..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
@@ -108,7 +108,7 @@ registerBlockType('sage/split-container', {
             value={mobileTitle}
             onChange={(value) => setAttributes({ mobileTitle: value })}
             placeholder="Enter mobile title..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
@@ -120,7 +120,7 @@ registerBlockType('sage/split-container', {
             value={body}
             onChange={(value) => setAttributes({ body: value })}
             placeholder="Enter body text..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
@@ -135,13 +135,13 @@ registerBlockType('sage/split-container', {
               value={link1Text}
               onChange={(value) => setAttributes({ link1Text: value })}
               placeholder="e.g. Learn More About Our Story"
-              allowedFormats={['core/bold', 'core/italic']}
+              allowedFormats={["core/bold", "core/italic"]}
             />
-            <TextControl
-              label="URL"
-              value={link1Url}
-              onChange={(value) => setAttributes({ link1Url: value })}
-              placeholder="https://..."
+            <LinkPicker
+              className="mt-2"
+              label="Link"
+              value={link1}
+              onChange={(value) => setAttributes({ link1: value })}
             />
           </div>
 
@@ -152,13 +152,13 @@ registerBlockType('sage/split-container', {
               value={link2Text}
               onChange={(value) => setAttributes({ link2Text: value })}
               placeholder="e.g. Request Justin as a Speaker"
-              allowedFormats={['core/bold', 'core/italic']}
+              allowedFormats={["core/bold", "core/italic"]}
             />
-            <TextControl
-              label="URL"
-              value={link2Url}
-              onChange={(value) => setAttributes({ link2Url: value })}
-              placeholder="https://..."
+            <LinkPicker
+              className="mt-2"
+              label="Link"
+              value={link2}
+              onChange={(value) => setAttributes({ link2: value })}
             />
           </div>
         </div>

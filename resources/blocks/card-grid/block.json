@@ -1,33 +1,73 @@
 {
-    "apiVersion": 3,
-    "name": "sage/card-grid",
-    "title": "Card Grid",
-    "category": "custom-blocks",
-    "icon": "grid-view",
-    "description": "Section with intro text on the left and a 2x2 grid of colored cards on the right.",
-    "textdomain": "sage",
-    "render": "file:./block.php",
-    "attributes": {
-        "heading": {
-            "type": "string",
-            "default": ""
+  "apiVersion": 3,
+  "name": "sage/card-grid",
+  "title": "Card Grid",
+  "category": "custom-blocks",
+  "icon": "grid-view",
+  "description": "Section with intro text on the left and a 2x2 grid of colored cards on the right.",
+  "textdomain": "sage",
+  "render": "file:./block.php",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "subtitle": {
+      "type": "string",
+      "default": ""
+    },
+    "body": {
+      "type": "string",
+      "default": ""
+    },
+    "cards": {
+      "type": "array",
+      "default": [
+        {
+          "backgroundColor": "pink",
+          "title": "",
+          "subtitle": "",
+          "body": "",
+          "linkText": "",
+          "link": {
+            "url": "",
+            "opensInNewTab": false
+          }
         },
-        "subtitle": {
-            "type": "string",
-            "default": ""
+        {
+          "backgroundColor": "teal",
+          "title": "",
+          "subtitle": "",
+          "body": "",
+          "linkText": "",
+          "link": {
+            "url": "",
+            "opensInNewTab": false
+          }
         },
-        "body": {
-            "type": "string",
-            "default": ""
+        {
+          "backgroundColor": "blue",
+          "title": "",
+          "subtitle": "",
+          "body": "",
+          "linkText": "",
+          "link": {
+            "url": "",
+            "opensInNewTab": false
+          }
         },
-        "cards": {
-            "type": "array",
-            "default": [
-                { "backgroundColor": "pink", "title": "", "subtitle": "", "body": "", "linkText": "", "linkUrl": "" },
-                { "backgroundColor": "teal", "title": "", "subtitle": "", "body": "", "linkText": "", "linkUrl": "" },
-                { "backgroundColor": "blue", "title": "", "subtitle": "", "body": "", "linkText": "", "linkUrl": "" },
-                { "backgroundColor": "yellow", "title": "", "subtitle": "", "body": "", "linkText": "", "linkUrl": "" }
-            ]
+        {
+          "backgroundColor": "yellow",
+          "title": "",
+          "subtitle": "",
+          "body": "",
+          "linkText": "",
+          "link": {
+            "url": "",
+            "opensInNewTab": false
+          }
         }
+      ]
     }
+  }
 }

@@ -1,22 +1,27 @@
-import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, RichText } from '@wordpress/block-editor';
-import { SelectControl, TextControl } from '@wordpress/components';
+import { registerBlockType } from "@wordpress/blocks";
+import { useBlockProps, RichText } from "@wordpress/block-editor";
+import { ColorPalette, BaseControl } from "@wordpress/components";
+import { useState } from "@wordpress/element";
+import { TabSelector } from "../components/backend/TabSelector.jsx";
+import { LinkPicker } from "../components/backend/LinkPicker.jsx";
+import {
+  BRAND_COLORS,
+  slugFromHex,
+  hexFromSlug,
+} from "../components/backend/brand-palette.js";
 
-const COLOR_OPTIONS = [
-  { label: 'Pink', value: 'pink' },
-  { label: 'Teal', value: 'teal' },
-  { label: 'Blue', value: 'blue' },
-  { label: 'Yellow', value: 'yellow' },
-  { label: 'Off White', value: 'off-white' },
-];
-
-registerBlockType('sage/card-grid', {
+registerBlockType("sage/card-grid", {
   edit: ({ attributes, setAttributes }) => {
     const { heading, subtitle, body, cards } = attributes;
     const blockProps = useBlockProps();
+    const [activeCard, setActiveCard] = useState(0);
 
-    const updateCard = (index, field, value) => {
-      const updated = [...(cards ?? [])];
+    const items = cards ?? [];
+    const index = Math.min(activeCard, Math.max(items.length - 1, 0));
+    const card = items[index] ?? {};
+
+    const updateCard = (field, value) => {
+      const updated = [...items];
       updated[index] = { ...updated[index], [field]: value };
       setAttributes({ cards: updated });
     };
@@ -54,7 +59,7 @@ registerBlockType('sage/card-grid', {
             value={heading}
             onChange={(value) => setAttributes({ heading: value })}
             placeholder="e.g. Join Us"
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
@@ -66,7 +71,7 @@ registerBlockType('sage/card-grid', {
             value={subtitle}
             onChange={(value) => setAttributes({ subtitle: value })}
             placeholder="Enter subtitle..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
@@ -78,84 +83,83 @@ registerBlockType('sage/card-grid', {
             value={body}
             onChange={(value) => setAttributes({ body: value })}
             placeholder="Enter body text..."
-            allowedFormats={['core/bold', 'core/italic']}
+            allowedFormats={["core/bold", "core/italic"]}
           />
         </div>
 
-        {/* Cards */}
-        <div className="space-y-6">
-          <p className="text-sm font-semibold">Cards (4 fixed)</p>
-          {(cards ?? []).map((card, index) => (
-            <div
-              key={index}
-              className="rounded-lg border border-gray-200 bg-white p-4"
-            >
-              <p className="mb-3 text-sm font-semibold text-gray-600">
-                Card {index + 1}
-              </p>
+        {/* Cards — fixed at 4 to match the section layout */}
+        <TabSelector
+          items={items}
+          activeItem={index}
+          setActiveItem={setActiveCard}
+          addItem={null}
+          itemLabelPrefix="Card"
+        />
 
-              <div className="mb-3">
-                <SelectControl
-                  label="Background Color"
-                  value={card.backgroundColor}
-                  options={COLOR_OPTIONS}
-                  onChange={(value) =>
-                    updateCard(index, 'backgroundColor', value)
-                  }
-                />
-              </div>
+        <div className="rounded-lg border border-gray-200 bg-white p-4">
+          <div className="mb-4">
+            <BaseControl __nextHasNoMarginBottom label="Background Color">
+              <ColorPalette
+                colors={BRAND_COLORS}
+                value={hexFromSlug(card.backgroundColor)}
+                onChange={(hex) =>
+                  updateCard("backgroundColor", slugFromHex(hex) || "pink")
+                }
+                disableCustomColors
+                clearable={false}
+              />
+            </BaseControl>
+          </div>
 
-              <div className="mb-3">
-                <p className="mb-2 text-sm font-semibold">Title</p>
-                <RichText
-                  tagName="div"
-                  value={card.title}
-                  onChange={(value) => updateCard(index, 'title', value)}
-                  placeholder="e.g. Donate"
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-              </div>
+          <div className="mb-3">
+            <p className="mb-2 text-sm font-semibold">Title</p>
+            <RichText
+              tagName="div"
+              value={card.title}
+              onChange={(value) => updateCard("title", value)}
+              placeholder="e.g. Donate"
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
 
-              <div className="mb-3">
-                <p className="mb-2 text-sm font-semibold">Subtitle</p>
-                <RichText
-                  tagName="div"
-                  value={card.subtitle}
-                  onChange={(value) => updateCard(index, 'subtitle', value)}
-                  placeholder="Enter card subtitle..."
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-              </div>
+          <div className="mb-3">
+            <p className="mb-2 text-sm font-semibold">Subtitle</p>
+            <RichText
+              tagName="div"
+              value={card.subtitle}
+              onChange={(value) => updateCard("subtitle", value)}
+              placeholder="Enter card subtitle..."
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
 
-              <div className="mb-3">
-                <p className="mb-2 text-sm font-semibold">Body</p>
-                <RichText
-                  tagName="div"
-                  value={card.body}
-                  onChange={(value) => updateCard(index, 'body', value)}
-                  placeholder="Enter card body text..."
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-              </div>
+          <div className="mb-3">
+            <p className="mb-2 text-sm font-semibold">Body</p>
+            <RichText
+              tagName="div"
+              value={card.body}
+              onChange={(value) => updateCard("body", value)}
+              placeholder="Enter card body text..."
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
 
-              <div className="rounded border border-gray-100 bg-gray-50 p-3">
-                <p className="mb-2 text-sm font-semibold">CTA Link</p>
-                <RichText
-                  tagName="div"
-                  value={card.linkText}
-                  onChange={(value) => updateCard(index, 'linkText', value)}
-                  placeholder="e.g. Donate Now"
-                  allowedFormats={['core/bold', 'core/italic']}
-                />
-                <TextControl
-                  label="URL"
-                  value={card.linkUrl}
-                  onChange={(value) => updateCard(index, 'linkUrl', value)}
-                  placeholder="https://..."
-                />
-              </div>
-            </div>
-          ))}
+          <div className="rounded border border-gray-100 bg-gray-50 p-3">
+            <p className="mb-2 text-sm font-semibold">CTA Link</p>
+            <RichText
+              tagName="div"
+              value={card.linkText}
+              onChange={(value) => updateCard("linkText", value)}
+              placeholder="e.g. Donate Now"
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+            <LinkPicker
+              className="mt-2"
+              label="Link"
+              value={card.link}
+              onChange={(value) => updateCard("link", value)}
+            />
+          </div>
         </div>
       </div>
     );

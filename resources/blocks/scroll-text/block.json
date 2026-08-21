@@ -1,18 +1,18 @@
 {
-    "apiVersion": 3,
-    "name": "sage/scroll-text",
-    "title": "Scroll Text",
-    "category": "custom-blocks",
-    "icon": "editor-paragraph",
-    "description": "Large text that reveals word by word as the user scrolls.",
-    "textdomain": "sage",
-    "render": "file:./block.php",
-    "viewScript": "file:./block.js",
-    "viewStyle": "file:./block.css",
-    "attributes": {
-        "content": {
-            "type": "string",
-            "default": ""
-        }
+  "apiVersion": 3,
+  "name": "sage/scroll-text",
+  "title": "Scroll Text",
+  "category": "custom-blocks",
+  "icon": "editor-paragraph",
+  "description": "Large text that reveals word by word as the user scrolls.",
+  "textdomain": "sage",
+  "render": "file:./block.php",
+  "viewScript": "file:./block.js",
+  "viewStyle": "file:./block.css",
+  "attributes": {
+    "content": {
+      "type": "string",
+      "default": ""
     }
+  }
 }

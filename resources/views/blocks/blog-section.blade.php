@@ -60,11 +60,13 @@
       <div class="">
         <div class="mb-8 flex items-center justify-between lg:mb-12">
           <h3 class="text-xlarge">Latest Blogs</h3>
-          <div class="hidden md:block">
-            <x-button href="#" target="#" color="dark-blue">
-              See All Blogs
-            </x-button>
-          </div>
+          @if (!$allBlogsLink['isEmpty'])
+            <div class="hidden md:block">
+              <x-button :href="$allBlogsLink['url']" :target="$allBlogsLink['target']" color="dark-blue">
+                See All Blogs
+              </x-button>
+            </div>
+          @endif
         </div>
 
         <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -101,11 +103,13 @@
           @endforeach
         </div>
 
-        <div class="mt-10 flex justify-center md:hidden">
-          <x-button href="#" target="#" color="dark-blue">
-            See All Blogs
-          </x-button>
-        </div>
+        @if (!$allBlogsLink['isEmpty'])
+          <div class="mt-10 flex justify-center md:hidden">
+            <x-button :href="$allBlogsLink['url']" :target="$allBlogsLink['target']" color="dark-blue">
+              See All Blogs
+            </x-button>
+          </div>
+        @endif
 
       </div>
     @endif

@@ -1,7 +1,7 @@
-import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps } from '@wordpress/block-editor';
+import { registerBlockType } from "@wordpress/blocks";
+import { useBlockProps } from "@wordpress/block-editor";
 
-registerBlockType('sage/styleguide', {
+registerBlockType("sage/styleguide", {
   edit: () => {
     const blockProps = useBlockProps();
 
