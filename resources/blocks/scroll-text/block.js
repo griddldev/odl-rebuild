@@ -15,11 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
       var rect = block.getBoundingClientRect();
       var vh = window.innerHeight;
 
-      var progress = (vh - rect.top) / (vh + rect.height);
+      var start = vh * 0.4;
+      var end = vh * 0.05;
+      var progress = (start - rect.top) / (start - end);
       progress = Math.max(0, Math.min(1, progress));
 
       for (var i = 0; i < totalWords; i++) {
-        var threshold = (i / totalWords) * 0.8 + 0.1;
+        var threshold = (i / totalWords) * 0.9 + 0.05;
         words[i].setAttribute(
           "data-revealed",
           progress > threshold ? "true" : "false",
