@@ -13,7 +13,7 @@ import {
 registerBlockType("sage/card-grid", {
   edit: ({ attributes, setAttributes }) => {
     const { heading, subtitle, body, cards } = attributes;
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({ style: { marginBottom: "10px" } });
     const [activeCard, setActiveCard] = useState(0);
 
     const items = cards ?? [];

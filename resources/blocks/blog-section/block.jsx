@@ -6,7 +6,7 @@ import { LinkPicker } from "../components/backend/LinkPicker.jsx";
 registerBlockType("sage/blog-section", {
   edit: ({ attributes, setAttributes }) => {
     const { title, featuredCategorySlug, allBlogsLink } = attributes;
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({ style: { marginBottom: "10px" } });
 
     return (
       <div

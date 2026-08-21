@@ -22,7 +22,7 @@ registerBlockType("sage/split-container", {
       link2Text,
       link2,
     } = attributes;
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({ style: { marginBottom: "10px" } });
 
     return (
       <div

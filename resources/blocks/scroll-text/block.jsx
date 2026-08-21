@@ -4,7 +4,7 @@ import { useBlockProps, RichText } from "@wordpress/block-editor";
 registerBlockType("sage/scroll-text", {
   edit: ({ attributes, setAttributes }) => {
     const { content } = attributes;
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({ style: { marginBottom: "10px" } });
 
     return (
       <div

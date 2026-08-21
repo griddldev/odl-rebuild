@@ -7,7 +7,7 @@ import { TabSelector } from "../components/backend/TabSelector.jsx";
 registerBlockType("sage/crooked-carousel", {
   edit: ({ attributes, setAttributes }) => {
     const { heading, subtitle, items } = attributes;
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({ style: { marginBottom: "10px" } });
 
     const [activeItem, setActiveItem] = useState(0);
 

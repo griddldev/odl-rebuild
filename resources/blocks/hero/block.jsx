@@ -25,7 +25,7 @@ registerBlockType("sage/hero", {
       link3,
     } = attributes;
 
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({ style: { marginBottom: "10px" } });
 
     return (
       <div

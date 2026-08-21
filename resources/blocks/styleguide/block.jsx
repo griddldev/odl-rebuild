@@ -3,7 +3,7 @@ import { useBlockProps } from "@wordpress/block-editor";
 
 registerBlockType("sage/styleguide", {
   edit: () => {
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({ style: { marginBottom: "10px" } });
 
     return (
       <div

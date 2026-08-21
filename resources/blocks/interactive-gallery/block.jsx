@@ -18,7 +18,7 @@ import {
 registerBlockType("sage/interactive-gallery", {
   edit: ({ attributes, setAttributes }) => {
     const { heading, items } = attributes;
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({ style: { marginBottom: "10px" } });
     const [activeItem, setActiveItem] = useState(0);
 
     const list = items ?? [];

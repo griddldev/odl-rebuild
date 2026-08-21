@@ -13,7 +13,7 @@ import {
 registerBlockType("sage/colored-cards", {
   edit: ({ attributes, setAttributes }) => {
     const { heading, description, cards } = attributes;
-    const blockProps = useBlockProps();
+    const blockProps = useBlockProps({ style: { marginBottom: "10px" } });
     const [activeCard, setActiveCard] = useState(0);
 
     const items = cards ?? [];
