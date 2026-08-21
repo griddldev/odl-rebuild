@@ -55,7 +55,7 @@ if ($latestQuery->have_posts()) {
     wp_reset_postdata();
 }
 
-$cardColors = ['yellow', 'off-white', 'teal'];
+$cardColors = ['yellow', 'pink', 'teal'];
 
 echo view('blocks.blog-section', [
     'title'        => $title,

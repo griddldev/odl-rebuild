@@ -8,12 +8,21 @@
 
 .blog-section-block .blog-section-card {
   color: inherit;
+  transition: background-color 0.3s ease;
 }
 
 .blog-section-block .blog-section-card-image {
   overflow: hidden;
 }
 
-.blog-section-block .blog-section-card-category--pink {
-  background-color: #f2c8f7;
+.blog-section-block .blog-section-card-category {
+  transition: background-color 0.3s ease;
+}
+
+.blog-section-block .blog-section-card:hover {
+  background-color: var(--color-off-white);
+}
+
+.blog-section-block .blog-section-card:hover .blog-section-card-category {
+  background-color: var(--color-pink);
 }
